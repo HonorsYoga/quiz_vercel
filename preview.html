@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacred Sexuality Quiz - Results Preview</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primal-color: #ff6b6b;
+            --heart-color: #48dbfb;
+            --mind-color: #1dd1a1;
+            --energetic-color: #feca57;
+            --primary-color: #a29bfe;
+            --secondary-color: #6c5ce7;
+            --text-color: #2d3436;
+            --light-text: #636e72;
+            --background-color: #f9f9f9;
+            --card-background: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            padding: 0;
+            margin: 0;
+            font-size: 20px;
+        }
+        
+        .sacred-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .sacred-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .sacred-logo {
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+        
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        h3 {
+            font-size: 2.5rem;
+            margin: 30px 0 15px;
+            color: var(--secondary-color);
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        /* Card Styles */
+        .sacred-card {
+            background-color: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: var(--transition);
+        }
+        
+        .sacred-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Button Styles */
+        .sacred-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 12px 24px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            margin: 10px 5px;
+            text-decoration: none;
+        }
+        
+        .sacred-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .sacred-button:active {
+            transform: translateY(0);
+        }
+        
+        .sacred-button-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        /* Results Styles */
+        .sacred-results-container {
+            display: block;
+        }
+        
+        .sacred-result-title {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+        
+        .sacred-bar-container {
+            position: relative;
+            height: 40px;
+            background-color: #f1f1f1;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .sacred-bar {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .sacred-bar-label {
+            z-index: 1;
+            font-size: 1.2rem;
+        }
+        
+        .sacred-bar-value {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .sacred-primal-bar {
+            background-color: var(--primal-color);
+        }
+        
+        .sacred-heart-bar {
+            background-color: var(--heart-color);
+        }
+        
+        .sacred-mind-bar {
+            background-color: var(--mind-color);
+        }
+        
+        .sacred-energetic-bar {
+            background-color: var(--energetic-color);
+        }
+        
+        /* Book Recommendations */
+        .sacred-book-recommendations {
+            margin: 40px 0;
+        }
+        
+        .sacred-book-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: var(--border-radius);
+        }
+        
+        .sacred-book-section-title {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .sacred-book-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        
+        .sacred-book-cover {
+            flex: 0 0 150px;
+        }
+        
+        .sacred-book-image {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+        }
+        
+        .sacred-book-details {
+            flex: 1;
+        }
+        
+        .sacred-book-title {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+        
+        .sacred-book-author {
+            font-style: italic;
+            color: var(--light-text);
+            margin-bottom: 10px;
+        }
+        
+        .sacred-book-summary {
+            margin-bottom: 15px;
+        }
+        
+        .sacred-book-link {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .sacred-book-link:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Call to Action */
+        .sacred-cta-section {
+            margin: 40px 0;
+            padding: 30px;
+            background-color: #f0f0f0;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+        
+        .sacred-cta-title {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .sacred-cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .sacred-cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+        
+        .sacred-cta-button:hover {
+            background-color: #5549d6;
+            transform: translateY(-3px);
+        }
+        
+        /* Email Form */
+        .sacred-email-form {
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+        
+        .sacred-email-title {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .sacred-email-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .sacred-email-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .sacred-email-button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .sacred-email-message {
+            margin-top: 15px;
+            font-style: italic;
+            display: none;
+        }
+        
+        /* Growth Areas */
+        .sacred-growth-areas-title {
+            color: #e17055;
+            margin-top: 30px;
+        }
+        
+        .sacred-growth-areas-list li {
+            margin-bottom: 10px;
+        }
+        
+        /* Footer */
+        .sacred-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        .sacred-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .sacred-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Preview Controls */
+        .sacred-preview-controls {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+        
+        .sacred-preview-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .sacred-preview-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .sacred-preview-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .sacred-preview-button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .sacred-preview-button.active {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            h3 {
+                font-size: 1.8rem;
+            }
+            
+            .sacred-book-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .sacred-book-cover {
+                margin-bottom: 15px;
+            }
+            
+            .sacred-cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sacred-container">
+        <div class="sacred-header">
+            <img src="logo.png" alt="Honors Yoga Logo" class="sacred-logo">
+            <h1>Sacred Sexuality Quiz - Results Preview</h1>
+            <p>Preview different result types without taking the full quiz</p>
+        </div>
+        
+        <div class="sacred-preview-controls">
+            <h3 class="sacred-preview-title">Select Archetype to Preview</h3>
+            <div class="sacred-preview-buttons">
+                <button id="preview-primal" class="sacred-preview-button active">Primal Dominant</button>
+                <button id="preview-heart" class="sacred-preview-button">Heart Dominant</button>
+                <button id="preview-mind" class="sacred-preview-button">Mind Dominant</button>
+                <button id="preview-energetic" class="sacred-preview-button">Energetic Dominant</button>
+            </div>
+            <p>Click any button above to see how the results page would look for that dominant archetype.</p>
+            <p><a href="https://vnoqbogq.manus.space" class="sacred-button">Back to Full Quiz</a></p>
+        </div>
+        
+        <div class="sacred-results-container" id="sacred-results-container">
+            <div class="sacred-card">
+                <h2>Your Sacred Sexuality Results</h2>
+                
+                <div id="sacred-bar-chart-container">
+                    <h3>Your Archetype Distribution</h3>
+                    <div style="margin: 30px 0; position: relative;">
+                        <div class="sacred-bar-container" style="width: 90%;">
+                            <div class="sacred-bar sacred-primal-bar" style="width: 75%;">
+                                <span class="sacred-bar-label">Primal</span>
+                            </div>
+                            <span class="sacred-bar-value">75%</span>
+                        </div>
+                        
+                        <div class="sacred-bar-container" style="width: 90%;">
+                            <div class="sacred-bar sacred-heart-bar" style="width: 45%;">
+                                <span class="sacred-bar-label">Heart</span>
+                            </div>
+                            <span class="sacred-bar-value">45%</span>
+                        </div>
+                        
+                        <div class="sacred-bar-container" style="width: 90%;">
+                            <div class="sacred-bar sacred-mind-bar" style="width: 60%;">
+                                <span class="sacred-bar-label">Mind</span>
+                            </div>
+                            <span class="sacred-bar-value">60%</span>
+                        </div>
+                        
+                        <div class="sacred-bar-container" style="width: 90%;">
+                            <div class="sacred-bar sacred-energetic-bar" style="width: 30%;">
+                                <span class="sacred-bar-label">Energetic</span>
+                            </div>
+                            <span class="sacred-bar-value">30%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="sacred-result-description">
+                    <h2 class="sacred-result-title">You Are Primal-Dominant</h2>
+                    <p>Your sexuality is deeply rooted in physical sensation and primal desire. You connect with the raw, instinctual aspects of sexuality and likely experience pleasure primarily through your body. The Primal archetype is connected to the root chakra and represents our fundamental life force energy.</p>
+                    
+                    <h3>Strengths:</h3>
+                    <ul>
+                        <li>Strong connection to physical pleasure</li>
+                        <li>Ability to be present in your body during intimate experiences</li>
+                        <li>Natural understanding of desire and passion</li>
+                        <li>Comfort with expressing needs and boundaries</li>
+                    </ul>
+                    
+                    <h3 class="sacred-growth-areas-title">🌿 Growth Areas:</h3>
+                    <ul class="sacred-growth-areas-list">
+                        <li>Practice slowing down to feel subtle sensations</li>
+                        <li>Explore the emotional dimensions of physical pleasure</li>
+                        <li>Develop awareness of energy movement during arousal</li>
+                        <li>Learn techniques for channeling sexual energy</li>
+                    </ul>
+                </div>
+                
+                <div class="sacred-book-recommendations">
+                    <div class="sacred-book-section">
+                        <h3 class="sacred-book-section-title">🎯 Go Deeper (Because You're Primal-Dominant)</h3>
+                        <div class="sacred-book-container">
+                            <div class="sacred-book-cover">
+                                <img src="51NJc5AZ9cL._AC_UF1000,1000_QL80_.jpg" alt="Urban Tantra cover" class="sacred-book-image">
+                            </div>
+                            <div class="sacred-book-details">
+                                <h4 class="sacred-book-title">Urban Tantra</h4>
+                                <p class="sacred-book-author">by Barbara Carrellas</p>
+                                <p class="sacred-book-summary">"Explore sacred sensuality, kink, and body-based Tantra."</p>
+                                <a href="https://www.amazon.com/Urban-Tantra-Second-Edition-Hierodules/dp/0399579680/" target="_blank" class="sacred-book-link">Get the Book</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sacred-book-section">
+                        <h3 class="sacred-book-section-title">🌱 Growth Edge (To Enhance Your Energetic Results)</h3>
+                        <div class="sacred-book-container">
+                            <div class="sacred-book-cover">
+                                <img src="multi orgasmic couple.webp" alt="The Multi-Orgasmic Couple cover" class="sacred-book-image">
+                            </div>
+                            <div class="sacred-book-details">
+                                <h4 class="sacred-book-title">The Multi-Orgasmic Couple</h4>
+                                <p class="sacred-book-author">by Mantak Chia</p>
+                                <p class="sacred-book-summary">"Learn how couples can share multiple orgasms and enhance intimacy."</p>
+                                <a href="https://www.amazon.com/Multi-Orgasmic-Couple-Sexual-Secrets-Should/dp/0062516140/" target="_blank" class="sacred-book-link">Get the Book</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sacred-cta-section">
+                    <h3 class="sacred-cta-title">🎓 Ready to Go Deeper?</h3>
+                    <div class="sacred-cta-buttons">
+                        <a href="https://www.honors-yoga.com/tantrateachertraining" target="_blank" class="sacred-cta-button">Take the Tantra Teacher Training</a>
+                        <a href="https://www.honors-yoga.com/tantratrainingforcouples" target="_blank" class="sacred-cta-button">💞 Explore Tantra for Couples</a>
+                    </div>
+                </div>
+                
+                <div id="sacred-orgasmic-results">
+                    <h3>Orgasmic Living Test Results</h3>
+                    <h4>Orgasmic Expansion (65%)</h4>
+                    <p>You've developed a significant capacity for orgasmic experience. You likely experience different types of orgasms and have begun to understand how sexual energy can be a vehicle for healing, connection, and spiritual experience. Your journey now involves refining and deepening these capacities.</p>
+                </div>
+                
+                <div class="sacred-email-form">
+                    <h3 class="sacred-email-title">Save Your Results</h3>
+                    <p>Enter your email to receive a copy of your results:</p>
+                    <input type="email" id="sacred-email-input" class="sacred-email-input" placeholder="Your email address">
+                    <button id="sacred-email-button" class="sacred-email-button">Send Results</button>
+                    <div id="sacred-email-message" class="sacred-email-message">Results sent! Check your inbox.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sacred-footer">
+            <p>© 2025 <a href="https://www.honors-yoga.com" target="_blank">Honors Yoga</a>. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Preview Data
+        const previewData = {
+            primal: {
+                title: "You Are Primal-Dominant",
+                description: "Your sexuality is deeply rooted in physical sensation and primal desire. You connect with the raw, instinctual aspects of sexuality and likely experience pleasure primarily through your body. The Primal archetype is connected to the root chakra and represents our fundamental life force energy.",
+                strengths: [
+                    "Strong connection to physical pleasure",
+                    "Ability to be present in your body during intimate experiences",
+                    "Natural understanding of desire and passion",
+                    "Comfort with expressing needs and boundaries"
+                ],
+                growthAreas: [
+                    "Practice slowing down to feel subtle sensations",
+                    "Explore the emotional dimensions of physical pleasure",
+                    "Develop awareness of energy movement during arousal",
+                    "Learn techniques for channeling sexual energy"
+                ],
+                barValues: {
+                    primal: 75,
+                    heart: 45,
+                    mind: 60,
+                    energetic: 30
+                },
+                weakestArchetype: "energetic",
+                dominantBook: {
+                    title: "Urban Tantra",
+                    author: "Barbara Carrellas",
+                    summary: "Explore sacred sensuality, kink, and body-based Tantra.",
+                    coverUrl: "51NJc5AZ9cL._AC_UF1000,1000_QL80_.jpg",
+                    purchaseUrl: "https://www.amazon.com/Urban-Tantra-Second-Edition-Hierodules/dp/0399579680/"
+                },
+                growthBook: {
+                    title: "The Multi-Orgasmic Couple",
+                    author: "Mantak Chia",
+                    summary: "Learn how couples can share multiple orgasms and enhance intimacy.",
+                    coverUrl: "multi orgasmic couple.webp",
+                    purchaseUrl: "https://www.amazon.com/Multi-Orgasmic-Couple-Sexual-Secrets-Should/dp/0062516140/"
+                }
+            },
+            heart: {
+                title: "You Are Heart-Dominant",
+                description: "Your sexuality flows through emotional connection and intimacy. You experience the deepest pleasure when there's heart-centered communion with your partner. The Heart archetype is connected to the heart chakra and represents our capacity for love, compassion, and emotional vulnerability in sexual experiences.",
+                strengths: [
+                    "Deep capacity for intimate connection",
+                    "Ability to create emotional safety in relationships",
+                    "Natural empathy and attunement to partners",
+                    "Integration of love and sexuality"
+                ],
+                growthAreas: [
+                    "Explore expressing raw desire and passion",
+                    "Practice receiving pleasure without needing to reciprocate",
+                    "Develop comfort with sexual communication",
+                    "Learn techniques for moving emotional energy through your body"
+                ],
+                barValues: {
+                    primal: 35,
+                    heart: 80,
+                    mind: 55,
+                    energetic: 40
+                },
+                weakestArchetype: "primal",
+                dominantBook: {
+                    title: "Acupressure for Lovers",
+                    author: "Michael Reed Gach",
+                    summary: "Learn to unlock intimacy and energy through healing touch.",
+                    coverUrl: "acupressure for lovers.jpg",
+                    purchaseUrl: "https://www.amazon.com/Acupressure-Lovers-Gach-Michael-Reed/dp/0553374001/"
+                },
+                growthBook: {
+                    title: "Urban Tantra",
+                    author: "Barbara Carrellas",
+                    summary: "Explore sacred sensuality, kink, and body-based Tantra.",
+                    coverUrl: "51NJc5AZ9cL._AC_UF1000,1000_QL80_.jpg",
+                    purchaseUrl: "https://www.amazon.com/Urban-Tantra-Second-Edition-Hierodules/dp/0399579680/"
+                }
+            },
+            mind: {
+                title: "You Are Mind-Dominant",
+                description: "Your sexuality is expressed through mental exploration and conscious awareness. You enjoy the psychological and philosophical dimensions of sexuality and may find that fantasy, conversation, and intellectual understanding enhance your pleasure. The Mind archetype is connected to the third eye chakra and represents our capacity for awareness and insight in sexual experiences.",
+                strengths: [
+                    "Thoughtful approach to sexuality",
+                    "Ability to articulate desires and boundaries",
+                    "Openness to learning and growth",
+                    "Capacity for mindfulness during intimate experiences"
+                ],
+                growthAreas: [
+                    "Practice being in your body during sexual experiences",
+                    "Explore surrendering control and analytical thinking",
+                    "Develop comfort with expressing emotions during intimacy",
+                    "Learn techniques for quieting the mind during sexual experiences"
+                ],
+                barValues: {
+                    primal: 50,
+                    heart: 45,
+                    mind: 85,
+                    energetic: 30
+                },
+                weakestArchetype: "energetic",
+                dominantBook: {
+                    title: "From Sex to Superconsciousness",
+                    author: "Osho",
+                    summary: "Discover how sexuality can be transformed into spiritual energy.",
+                    coverUrl: "91ItLoQcIqL._AC_UF1000,1000_QL80_.jpg",
+                    purchaseUrl: "https://www.amazon.com/Sex-Matters-Superconsciousness-Osho/dp/0312180993/"
+                },
+                growthBook: {
+                    title: "The Multi-Orgasmic Couple",
+                    author: "Mantak Chia",
+                    summary: "Learn how couples can share multiple orgasms and enhance intimacy.",
+                    coverUrl: "multi orgasmic couple.webp",
+                    purchaseUrl: "https://www.amazon.com/Multi-Orgasmic-Couple-Sexual-Secrets-Should/dp/0062516140/"
+                }
+            },
+            energetic: {
+                title: "You Are Energetic-Dominant",
+                description: "Your sexuality has a strong spiritual or energetic component. You may experience subtle energies, expanded states of consciousness, or spiritual dimensions during sexual experiences. The Energetic/Psychic archetype is connected to the crown chakra and represents our capacity for transcendent sexual experiences.",
+                strengths: [
+                    "Ability to sense and work with subtle energies",
+                    "Capacity for transcendent sexual experiences",
+                    "Natural understanding of sexuality as a spiritual practice",
+                    "Potential for whole-body and non-genital orgasms"
+                ],
+                growthAreas: [
+                    "Ground your experiences in physical sensation",
+                    "Explore the emotional dimensions of energetic experiences",
+                    "Develop practical communication about energetic experiences",
+                    "Learn techniques for integrating spiritual experiences"
+                ],
+                barValues: {
+                    primal: 40,
+                    heart: 55,
+                    mind: 50,
+                    energetic: 85
+                },
+                weakestArchetype: "primal",
+                dominantBook: {
+                    title: "The Multi-Orgasmic Couple",
+                    author: "Mantak Chia",
+                    summary: "Learn how couples can share multiple orgasms and enhance intimacy.",
+                    coverUrl: "multi orgasmic couple.webp",
+                    purchaseUrl: "https://www.amazon.com/Multi-Orgasmic-Couple-Sexual-Secrets-Should/dp/0062516140/"
+                },
+                growthBook: {
+                    title: "Urban Tantra",
+                    author: "Barbara Carrellas",
+                    summary: "Explore sacred sensuality, kink, and body-based Tantra.",
+                    coverUrl: "51NJc5AZ9cL._AC_UF1000,1000_QL80_.jpg",
+                    purchaseUrl: "https://www.amazon.com/Urban-Tantra-Second-Edition-Hierodules/dp/0399579680/"
+                }
+            }
+        };
+        
+        // DOM Elements
+        const previewButtons = {
+            primal: document.getElementById("preview-primal"),
+            heart: document.getElementById("preview-heart"),
+            mind: document.getElementById("preview-mind"),
+            energetic: document.getElementById("preview-energetic")
+        };
+        
+        const resultElements = {
+            title: document.querySelector(".sacred-result-title"),
+            description: document.querySelector("#sacred-result-description p"),
+            strengths: document.querySelector("#sacred-result-description ul"),
+            growthAreas: document.querySelector(".sacred-growth-areas-list"),
+            barChart: document.querySelector("#sacred-bar-chart-container"),
+            dominantBookSection: document.querySelector(".sacred-book-section:first-child"),
+            growthBookSection: document.querySelector(".sacred-book-section:last-child")
+        };
+        
+        // Initialize Preview
+        function initializePreview() {
+            // Set up event listeners for preview buttons
+            for (const archetype in previewButtons) {
+                previewButtons[archetype].addEventListener("click", () => {
+                    updatePreview(archetype);
+                    
+                    // Update active button
+                    for (const btn in previewButtons) {
+                        previewButtons[btn].classList.remove("active");
+                    }
+                    previewButtons[archetype].classList.add("active");
+                });
+            }
+            
+            // Initialize with primal preview
+            updatePreview("primal");
+        }
+        
+        // Update preview based on selected archetype
+        function updatePreview(archetype) {
+            const data = previewData[archetype];
+            
+            // Update result title and description
+            resultElements.title.textContent = data.title;
+            resultElements.description.textContent = data.description;
+            
+            // Update strengths list
+            resultElements.strengths.innerHTML = data.strengths.map(strength => `<li>${strength}</li>`).join('');
+            
+            // Update growth areas list
+            resultElements.growthAreas.innerHTML = data.growthAreas.map(area => `<li>${area}</li>`).join('');
+            
+            // Update bar chart
+            updateBarChart(data.barValues);
+            
+            // Update book recommendations
+            updateBookRecommendations(archetype, data.weakestArchetype, data.dominantBook, data.growthBook);
+        }
+        
+        // Update bar chart values
+        function updateBarChart(values) {
+            const barChart = `
+                <h3>Your Archetype Distribution</h3>
+                <div style="margin: 30px 0; position: relative;">
+                    <div class="sacred-bar-container" style="width: 90%;">
+                        <div class="sacred-bar sacred-primal-bar" style="width: ${values.primal}%;">
+                            <span class="sacred-bar-label">Primal</span>
+                        </div>
+                        <span class="sacred-bar-value">${values.primal}%</span>
+                    </div>
+                    
+                    <div class="sacred-bar-container" style="width: 90%;">
+                        <div class="sacred-bar sacred-heart-bar" style="width: ${values.heart}%;">
+                            <span class="sacred-bar-label">Heart</span>
+                        </div>
+                        <span class="sacred-bar-value">${values.heart}%</span>
+                    </div>
+                    
+                    <div class="sacred-bar-container" style="width: 90%;">
+                        <div class="sacred-bar sacred-mind-bar" style="width: ${values.mind}%;">
+                            <span class="sacred-bar-label">Mind</span>
+                        </div>
+                        <span class="sacred-bar-value">${values.mind}%</span>
+                    </div>
+                    
+                    <div class="sacred-bar-container" style="width: 90%;">
+                        <div class="sacred-bar sacred-energetic-bar" style="width: ${values.energetic}%;">
+                            <span class="sacred-bar-label">Energetic</span>
+                        </div>
+                        <span class="sacred-bar-value">${values.energetic}%</span>
+                    </div>
+                </div>
+            `;
+            
+            resultElements.barChart.innerHTML = barChart;
+        }
+        
+        // Update book recommendations
+        function updateBookRecommendations(dominantArchetype, weakestArchetype, dominantBook, growthBook) {
+            // Update dominant book section
+            const dominantBookHTML = `
+                <h3 class="sacred-book-section-title">🎯 Go Deeper (Because You're ${capitalizeFirstLetter(dominantArchetype)}-Dominant)</h3>
+                <div class="sacred-book-container">
+                    <div class="sacred-book-cover">
+                        <img src="${dominantBook.coverUrl}" alt="${dominantBook.title} cover" class="sacred-book-image">
+                    </div>
+                    <div class="sacred-book-details">
+                        <h4 class="sacred-book-title">${dominantBook.title}</h4>
+                        <p class="sacred-book-author">by ${dominantBook.author}</p>
+                        <p class="sacred-book-summary">"${dominantBook.summary}"</p>
+                        <a href="${dominantBook.purchaseUrl}" target="_blank" class="sacred-book-link">Get the Book</a>
+                    </div>
+                </div>
+            `;
+            
+            // Update growth book section
+            const growthBookHTML = `
+                <h3 class="sacred-book-section-title">🌱 Growth Edge (To Enhance Your ${capitalizeFirstLetter(weakestArchetype)} Results)</h3>
+                <div class="sacred-book-container">
+                    <div class="sacred-book-cover">
+                        <img src="${growthBook.coverUrl}" alt="${growthBook.title} cover" class="sacred-book-image">
+                    </div>
+                    <div class="sacred-book-details">
+                        <h4 class="sacred-book-title">${growthBook.title}</h4>
+                        <p class="sacred-book-author">by ${growthBook.author}</p>
+                        <p class="sacred-book-summary">"${growthBook.summary}"</p>
+                        <a href="${growthBook.purchaseUrl}" target="_blank" class="sacred-book-link">Get the Book</a>
+                    </div>
+                </div>
+            `;
+            
+            resultElements.dominantBookSection.innerHTML = dominantBookHTML;
+            resultElements.growthBookSection.innerHTML = growthBookHTML;
+        }
+        
+        // Helper function to capitalize first letter
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+        
+        // Initialize the preview when the page loads
+        document.addEventListener("DOMContentLoaded", initializePreview);
+    </script>
+</body>
+</html>

@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacred Sexuality Quiz</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primal-color: #e74c3c;
+            --heart-color: #f8a5c2;
+            --mind-color: #9b59b6;
+            --energetic-color: #3498db;
+            --primary-color: #b5651d;
+            --secondary-color: #8b4513;
+            --text-color: #2d3436;
+            --light-text: #636e72;
+            --background-color: #f9f9f9;
+            --card-background: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            padding: 0;
+            margin: 0;
+            font-size: 20px;
+        }
+        
+        .sacred-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .sacred-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .sacred-logo {
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+        
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        h3 {
+            font-size: 2.5rem;
+            margin: 30px 0 15px;
+            color: var(--secondary-color);
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        /* Card Styles */
+        .sacred-card {
+            background-color: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: var(--transition);
+        }
+        
+        .sacred-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Button Styles */
+        .sacred-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 12px 24px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            margin: 10px 5px;
+            text-decoration: none;
+        }
+        
+        .sacred-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .sacred-button:active {
+            transform: translateY(0);
+        }
+        
+        .sacred-button-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        /* Quiz Styles */
+        .sacred-intro, .sacred-questions, .sacred-results {
+            display: none;
+        }
+        
+        .sacred-intro.active, .sacred-questions.active, .sacred-results.active {
+            display: block;
+        }
+        
+        .sacred-question {
+            margin-bottom: 40px;
+        }
+        
+        .sacred-question-text {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        /* Scale Styles */
+        .sacred-scale-container {
+            margin: 30px 0;
+        }
+        
+        .sacred-scale {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .sacred-scale-label {
+            font-size: 1.3rem;
+            color: var(--light-text);
+        }
+        
+        .sacred-scale-slider {
+            -webkit-appearance: none;
+            width: calc(100% - 20px);
+            height: 15px;
+            border-radius: 5px;
+            background: #dfe6e9;
+            outline: none;
+            margin: 15px 10px;
+        }
+        
+        .sacred-scale-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .sacred-scale-slider::-webkit-slider-thumb:hover {
+            background: var(--secondary-color);
+            transform: scale(1.2);
+        }
+        
+        .sacred-scale-slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+        
+        .sacred-scale-slider::-moz-range-thumb:hover {
+            background: var(--secondary-color);
+            transform: scale(1.2);
+        }
+        
+        /* Number Scale Styles */
+        .sacred-number-scale {
+            margin: 10px 0 30px;
+            position: relative;
+        }
+        
+        .sacred-number-labels {
+            display: flex;
+            justify-content: space-between;
+            width: calc(100% - 20px);
+            margin: 0 10px 5px;
+        }
+        
+        .sacred-number-labels span {
+            font-size: 1rem;
+            color: var(--light-text);
+            text-align: center;
+            position: relative;
+            width: auto;
+        }
+        
+        .sacred-selected-value {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-top: 10px;
+        }
+        
+        /* Yes/No Button Styles */
+        .sacred-yesno-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .sacred-yesno-button {
+            padding: 10px 30px;
+            border-radius: 30px;
+            background-color: #f5f5f5;
+            color: var(--light-text);
+            border: 2px solid #dfe6e9;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .sacred-yesno-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        .sacred-yesno-button.selected-yes {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .sacred-yesno-button.selected-no {
+            background-color: var(--light-text);
+            color: white;
+            border-color: var(--light-text);
+        }
+        .sacred-progress-container {
+            width: 100%;
+            height: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .sacred-progress-bar {
+            height: 100%;
+            background: var(--primary-color);
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 5px;
+        }
+        
+        .sacred-progress-text {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--light-text);
+            margin-top: 5px;
+        }
+        
+        /* Results Styles */
+        .sacred-results-container {
+            display: none;
+        }
+        
+        .sacred-result-title {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+        
+        .sacred-bar-container {
+            position: relative;
+            height: 40px;
+            background-color: #f1f1f1;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .sacred-bar {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .sacred-bar-label {
+            z-index: 1;
+            font-size: 1.2rem;
+        }
+        
+        .sacred-bar-value {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .sacred-primal-bar {
+            background-color: var(--primal-color);
+        }
+        
+        .sacred-heart-bar {
+            background-color: var(--heart-color);
+        }
+        
+        .sacred-mind-bar {
+            background-color: var(--mind-color);
+        }
+        
+        .sacred-energetic-bar {
+            background-color: var(--energetic-color);
+        }
+        
+        /* Book Recommendation Styles */
+        .sacred-book-section {
+            margin: 30px 0;
+        }
+        
+        .sacred-book-container {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            background-color: rgba(181, 101, 29, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .sacred-book-cover {
+            flex: 0 0 120px;
+            margin-right: 20px;
+        }
+        
+        .sacred-book-image {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .sacred-book-details {
+            flex: 1;
+        }
+        
+        .sacred-book-title {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .sacred-book-summary {
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .sacred-book-link {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .sacred-book-link:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Glossary Link Styles */
+        .sacred-glossary-link {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+        
+        .sacred-glossary-link:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+        
+        .sacred-glossary-link-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        /* Orgasmic Living Score Styles */
+        .sacred-orgasmic-score {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: var(--border-radius);
+        }
+        
+        .sacred-orgasmic-score-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .sacred-orgasmic-score-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .sacred-orgasmic-categories {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .sacred-orgasmic-category {
+            padding: 10px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-weight: bold;
+            background-color: #dfe6e9;
+            color: var(--light-text);
+        }
+        
+        .sacred-orgasmic-category.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .sacred-orgasmic-description {
+            margin-top: 20px;
+        }
+        
+        .sacred-orgasmic-recommendations {
+            margin-top: 15px;
+        }
+        
+        .sacred-orgasmic-recommendations ul {
+            margin-left: 20px;
+        }
+        
+        .sacred-orgasmic-recommendations li {
+            margin-bottom: 8px;
+        }
+        
+        /* Book Recommendations */
+        .sacred-book-recommendations {
+            margin: 40px 0;
+        }
+        
+        .sacred-book-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: var(--border-radius);
+        }
+        
+        .sacred-book-section-title {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .sacred-book-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        
+        .sacred-book-cover {
+            flex: 0 0 150px;
+        }
+        
+        .sacred-book-image {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+        }
+        
+        .sacred-book-details {
+            flex: 1;
+        }
+        
+        .sacred-book-title {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+        
+        .sacred-book-author {
+            font-style: italic;
+            color: var(--light-text);
+            margin-bottom: 10px;
+        }
+        
+        .sacred-book-summary {
+            margin-bottom: 15px;
+        }
+        
+        .sacred-book-link {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .sacred-book-link:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Call to Action */
+        .sacred-cta-section {
+            margin: 40px 0;
+            padding: 30px;
+            background-color: #f0f0f0;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+        
+        .sacred-cta-title {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .sacred-cta-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .sacred-cta-button {
+            display: inline-block;
+            background-color: white;
+            color: var(--text-color);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            transition: var(--transition);
+            width: 250px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .sacred-cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .sacred-program-image {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        /* Email Form */
+        .sacred-email-form {
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+        
+        .sacred-email-title {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+        
+        .sacred-email-input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1.2rem;
+        }
+        
+        .sacred-email-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .sacred-email-button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .sacred-email-message {
+            margin-top: 10px;
+            color: green;
+            display: none;
+        }
+        
+        /* Progress Bar */
+        .sacred-progress-container {
+            width: 100%;
+            height: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .sacred-progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        /* Scroll Notification */
+        .sacred-scroll-notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1rem;
+            display: none;
+            animation: fadeInOut 3s ease;
+        }
+        
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        
+        /* Footer */
+        .sacred-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: var(--light-text);
+        }
+        
+        .sacred-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        /* Archetype Icons */
+        .sacred-archetype-icons {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .sacred-archetype-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+            width: 200px;
+        }
+        
+        .sacred-icon-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .sacred-primal-icon {
+            background-color: var(--primal-color);
+        }
+        
+        .sacred-heart-icon {
+            background-color: var(--heart-color);
+        }
+        
+        .sacred-mind-icon {
+            background-color: var(--mind-color);
+        }
+        
+        .sacred-energetic-icon {
+            background-color: var(--energetic-color);
+        }
+        
+        .sacred-icon-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+        
+        .sacred-icon-description {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+        
+        /* Gender Selection Styles */
+        .sacred-gender-selection {
+            display: none;
+        }
+        
+        .sacred-gender-selection.active {
+            display: block;
+        }
+        
+        .sacred-gender-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .sacred-gender-button {
+            min-width: 150px;
+        }
+        
+        .sacred-gender-note {
+            text-align: center;
+            font-style: italic;
+            color: var(--light-text);
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) {
+            .sacred-container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            h3 {
+                font-size: 1.8rem;
+            }
+            
+            .sacred-question-text {
+                font-size: 1.5rem;
+            }
+            
+            .sacred-book-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .sacred-book-cover {
+                margin-bottom: 20px;
+            }
+            
+            .sacred-cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sacred-container">
+        <div class="sacred-header">
+            <img src="Honorsyoga-Logo with brand name.png" alt="Honors Yoga Logo" class="sacred-logo">
+            <h1>Sacred Sexuality Quiz</h1>
+            <p>Discover your sexual self through this interactive journey</p>
+        </div>
+        
+        <div class="sacred-intro active">
+            <div class="sacred-card">
+                <h2>Welcome to Your Journey of Sexual Self-Discovery</h2>
+                
+                <p>This interactive experience will help you discover your sexual self by exploring your dominant sexual archetypes and orgasmic potential. The quiz consists of two parts:</p>
+                
+                <div class="sacred-archetype-icons">
+                    <div class="sacred-archetype-icon">
+                        <div class="sacred-icon-circle sacred-primal-icon">P</div>
+                        <div class="sacred-icon-label">Primal</div>
+                        <div class="sacred-icon-description">Body-centered, passionate, and sensory. This archetype connects with physical attraction, power dynamics, and raw sexual energy.</div>
+                    </div>
+                    
+                    <div class="sacred-archetype-icon">
+                        <div class="sacred-icon-circle sacred-heart-icon">H</div>
+                        <div class="sacred-icon-label">Heart</div>
+                        <div class="sacred-icon-description">Connection-centered, emotional, and intimate. This archetype values vulnerability, safety, and the emotional dimensions of sexuality.</div>
+                    </div>
+                    
+                    <div class="sacred-archetype-icon">
+                        <div class="sacred-icon-circle sacred-mind-icon">M</div>
+                        <div class="sacred-icon-label">Mind</div>
+                        <div class="sacred-icon-description">Thought-centered, verbal, and fantasy-driven. This archetype engages with the intellectual aspects of sexuality, including fantasies and conscious awareness.</div>
+                    </div>
+                    
+                    <div class="sacred-archetype-icon">
+                        <div class="sacred-icon-circle sacred-energetic-icon">E</div>
+                        <div class="sacred-icon-label">Energetic/Psychic</div>
+                        <div class="sacred-icon-description">Energy-centered, spiritual, and transcendent. This archetype explores the subtle energies, spiritual connection, and transformative potential of sexuality.</div>
+                    </div>
+                </div>
+                
+                <p>The quiz also includes an Orgasmic Living Test to explore your orgasmic experiences and potential. <a href="glossary.html" target="_blank" class="sacred-glossary-link">View Orgasmic Living Glossary</a></p>
+                
+                <p>Your responses are completely private and will only be used to generate your personalized results. Take your time with each question and answer honestly for the most accurate insights.</p>
+                
+                <div class="sacred-button-container">
+                    <button id="sacred-start-button" class="sacred-button">Begin Your Journey</button>
+                    <script>
+                        // Inline fallback script to ensure navigation works
+                        document.getElementById('sacred-start-button').onclick = function() {
+                            console.log("Inline fallback navigation triggered");
+                            document.querySelector('.sacred-intro').style.display = 'none';
+                            document.querySelector('.sacred-gender-selection').style.display = 'block';
+                            // The main script will handle initialization when it loads
+                        };
+                    </script>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sacred-gender-selection">
+            <div class="sacred-card">
+                <h2>Select Your Gender Identity</h2>
+                <p>To personalize your quiz experience, please select your gender identity below. This will help us show you the most relevant questions.</p>
+                
+                <div class="sacred-gender-buttons">
+                    <button id="sacred-female-button" class="sacred-button sacred-gender-button" data-gender="female">Female</button>
+                    <button id="sacred-male-button" class="sacred-button sacred-gender-button" data-gender="male">Male</button>
+                </div>
+                
+                <p class="sacred-gender-note">Note: Your selection helps us tailor the questions to your experience. All gender options receive a comprehensive assessment.</p>
+                
+                <div class="sacred-button-container">
+                    <button id="sacred-gender-next-button" class="sacred-button">Next</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sacred-questions">
+            <div class="sacred-card">
+                <div class="sacred-progress-container">
+                    <div class="sacred-progress-bar"></div>
+                    <div class="sacred-progress-text">Question <span id="sacred-current-question">1</span> of <span id="sacred-total-questions">50</span></div>
+                </div>
+                
+                <div id="sacred-question-container">
+                    <h3 class="sacred-question-text"></h3>
+                    <p class="sacred-question-number"></p>
+                    <div class="sacred-scale-container"></div>
+                    <div class="sacred-yesno-container"></div>
+                </div>
+                
+                <div class="sacred-button-container">
+                    <button id="sacred-prev-button" class="sacred-button">Previous</button>
+                    <button id="sacred-next-button" class="sacred-button">Next</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sacred-results">
+            <div class="sacred-card">
+                <h2>Your Sacred Sexuality Results</h2>
+                
+                <div id="sacred-bar-chart-container">
+                    <h3>Your Archetype Distribution</h3>
+                    <div style="margin: 30px 0; position: relative;">
+                        <div class="sacred-bar-container" style="width: 90%;">
+                            <div class="sacred-bar sacred-primal-bar" style="width: 0%;">
+                                <span class="sacred-bar-label">Primal</span>
+                            </div>
+                            <span class="sacred-bar-value">0%</span>
+                        </div>
+                        
+                        <div class="sacred-bar-container" style="width: 90%;">
+                            <div class="sacred-bar sacred-heart-bar" style="width: 0%;">
+                                <span class="sacred-bar-label">Heart</span>
+                            </div>
+                            <span class="sacred-bar-value">0%</span>
+                        </div>
+                        
+                        <div class="sacred-bar-container" style="width: 90%;">
+                            <div class="sacred-bar sacred-mind-bar" style="width: 0%;">
+                                <span class="sacred-bar-label">Mind</span>
+                            </div>
+                            <span class="sacred-bar-value">0%</span>
+                        </div>
+                        
+                        <div class="sacred-bar-container" style="width: 90%;">
+                            <div class="sacred-bar sacred-energetic-bar" style="width: 0%;">
+                                <span class="sacred-bar-label">Energetic</span>
+                            </div>
+                            <span class="sacred-bar-value">0%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="sacred-result-description">
+                    <h3>Strengths:</h3>
+                    <ul id="sacred-strengths-list">
+                        <li>Loading strengths...</li>
+                    </ul>
+                    
+                    <h3 class="sacred-growth-areas-title">🌿 Growth Areas:</h3>
+                    <ul id="sacred-growth-areas-list" class="sacred-growth-areas-list">
+                        <li>Loading growth areas...</li>
+                    </ul>
+                </div>
+                
+                <div id="sacred-orgasmic-results">
+                    <h3>Orgasmic Living Test Results</h3>
+                    
+                    <div class="sacred-orgasmic-score">
+                        <h4 class="sacred-orgasmic-score-title">Your Orgasmic Living Score:</h4>
+                        <p class="sacred-orgasmic-score-value" id="sacred-orgasmic-score-value">0%</p>
+                        
+                        <div class="sacred-orgasmic-categories">
+                            <div class="sacred-orgasmic-category" id="sacred-category-beginner">Beginner</div>
+                            <div class="sacred-orgasmic-category" id="sacred-category-developing">Developing</div>
+                            <div class="sacred-orgasmic-category" id="sacred-category-intermediate">Intermediate</div>
+                            <div class="sacred-orgasmic-category" id="sacred-category-advanced">Advanced</div>
+                            <div class="sacred-orgasmic-category" id="sacred-category-master">Master</div>
+                        </div>
+                        
+                        <div class="sacred-orgasmic-description">
+                            <h4>Your Orgasmic Living Category: <span id="sacred-orgasmic-category-title">Loading...</span></h4>
+                            <p id="sacred-orgasmic-description-text">Loading your orgasmic living description...</p>
+                            
+                            <div class="sacred-orgasmic-recommendations">
+                                <h4>Recommendations:</h4>
+                                <ul id="sacred-orgasmic-recommendations-list">
+                                    <li>Loading recommendations...</li>
+                                </ul>
+                            </div>
+                            
+                            <p class="sacred-glossary-link-container">
+                                <a href="glossary.html" target="_blank" class="sacred-glossary-link">Explore the Orgasmic Living Glossary</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sacred-cta-section">
+                    <h3 class="sacred-cta-title">🎓 Ready to Go Deeper?</h3>
+                    <div class="sacred-cta-buttons">
+                        <a href="https://www.honors-yoga.com/tantrateachertraining" target="_blank" class="sacred-cta-button">
+                            <img src="tantra teachers training.jpeg" alt="Tantra Teacher Training" class="sacred-program-image"><br>
+                            Take the Tantra Teacher Training
+                        </a>
+                        <a href="https://www.honors-yoga.com/tantratrainingforcouples" target="_blank" class="sacred-cta-button">
+                            <img src="couples.jpeg" alt="Tantra for Couples" class="sacred-program-image"><br>
+                            💞 Explore Tantra for Couples
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="sacred-email-form">
+                    <h3 class="sacred-email-title">Save Your Results</h3>
+                    <p>Enter your email to receive a copy of your results:</p>
+                    <input type="email" id="sacred-email-input" class="sacred-email-input" placeholder="Your email address">
+                    <button id="sacred-email-button" class="sacred-email-button">Send Results</button>
+                    <div id="sacred-email-message" class="sacred-email-message">Results sent! Check your inbox.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sacred-scroll-notification" id="sacred-scroll-notification">
+            Scroll down to continue
+        </div>
+        
+        <div class="sacred-footer">
+            <p>© 2025 <a href="https://www.honors-yoga.com" target="_blank">Honors Yoga</a>. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script src="updated_quiz_data.js"></script>
+    <script src="console_logging.js"></script>
+    <script src="new_script.js"></script>
+    <script>
+        // DOM Elements
+        const sacredElements = {
+            intro: document.querySelector('.sacred-intro'),
+            questions: document.querySelector('.sacred-questions'),
+            results: document.querySelector('.sacred-results'),
+            startButton: document.getElementById('sacred-start-button'),
+            prevButton: document.getElementById('sacred-prev-button'),
+            nextButton: document.getElementById('sacred-next-button'),
+            questionContainer: document.getElementById('sacred-question-container'),
+            progressBar: document.querySelector('.sacred-progress-bar'),
+            barChartContainer: document.getElementById('sacred-bar-chart-container'),
+            resultDescription: document.getElementById('sacred-result-description'),
+            emailInput: document.getElementById('sacred-email-input'),
+            emailButton: document.getElementById('sacred-email-button'),
+            emailMessage: document.getElementById('sacred-email-message'),
+            scrollNotification: document.getElementById('sacred-scroll-notification')
+        };
+        
+        // Quiz State
+        const sacredQuizState = {
+            currentSection: 'intro',
+            currentQuestionIndex: 0,
+            answers: [],
+            results: {
+                archetypes: {
+                    primal: 0,
+                    heart: 0,
+                    mind: 0,
+                    energetic: 0
+                },
+                dominantArchetype: '',
+                weakestArchetype: '',
+                orgasmicScore: 0,
+                orgasmicCategory: ''
+            }
+        };
+        
+        // Quiz Data
+        const sacredQuizData = {
+            archetypeDescriptions: {
+                primal: {
+                    description: "Your sexuality is deeply rooted in physical sensation and primal desire. You connect with the raw, instinctual aspects of sexuality and likely experience pleasure primarily through your body. The Primal archetype represents the foundation of sexuality, honoring the wisdom of the body and its natural desires.",
+                    strengths: [
+                        "Strong connection to physical pleasure and bodily sensations",
+                        "Natural ability to be present in the moment during sexual experiences",
+                        "Comfort with expressing desires and pursuing pleasure",
+                        "Appreciation for the raw, animalistic aspects of sexuality"
+                    ]
+                },
+                heart: {
+                    description: "Your sexuality is centered around emotional connection and intimacy. For you, sex is a profound expression of love and a way to deepen bonds with your partner. The Heart archetype represents the relational aspect of sexuality, focusing on connection, vulnerability, and the exchange of love energy.",
+                    strengths: [
+                        "Deep capacity for emotional intimacy during sexual experiences",
+                        "Natural ability to create and maintain heart connection with partners",
+                        "Sensitivity to your partner's emotional needs and responses",
+                        "Tendency to experience sex as a profound expression of love and devotion"
+                    ]
+                },
+                mind: {
+                    description: "Your sexuality has a strong mental and psychological component. You're drawn to the intellectual aspects of sexuality, including fantasy, role-play, and psychological dynamics. The Mind archetype represents the cognitive dimension of sexuality, where imagination, creativity, and mental stimulation play central roles.",
+                    strengths: [
+                        "Rich fantasy life and creative approach to sexual expression",
+                        "Ability to use language, stories, and scenarios to enhance pleasure",
+                        "Interest in learning and exploring new sexual concepts and practices",
+                        "Capacity to understand and navigate complex relationship dynamics"
+                    ]
+                },
+                energetic: {
+                    description: "Your sexuality has a strong spiritual and energetic dimension. You're attuned to subtle energies and may experience sexuality as a pathway to transcendent or mystical states. The Energetic archetype represents the spiritual aspect of sexuality, where pleasure becomes a vehicle for awakening and transformation.",
+                    strengths: [
+                        "Ability to sense and work with sexual energy beyond physical sensation",
+                        "Capacity for transcendent or spiritual experiences through sexuality",
+                        "Natural understanding of the connection between sexuality and spirituality",
+                        "Potential to use sexual energy for healing, manifestation, and spiritual growth"
+                    ]
+                }
+            }
+        };
+        
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            sacredElements.startButton.addEventListener('click', startQuiz);
+            sacredElements.prevButton.addEventListener('click', showPreviousQuestion);
+            sacredElements.nextButton.addEventListener('click', handleNextButton);
+            sacredElements.emailButton.addEventListener('click', handleEmailSubmit);
+        });
+        
+        // Initialize Quiz
+        function startQuiz() {
+            sacredQuizState.currentSection = 'questions';
+            sacredQuizState.currentQuestionIndex = 0;
+            updateQuizDisplay();
+            showQuestion(0);
+            
+            // Show scroll notification
+            sacredElements.scrollNotification.style.display = 'block';
+            setTimeout(() => {
+                sacredElements.scrollNotification.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Update Quiz Display
+        function updateQuizDisplay() {
+            sacredElements.intro.classList.remove('active');
+            sacredElements.questions.classList.remove('active');
+            sacredElements.results.classList.remove('active');
+            
+            if (sacredQuizState.currentSection === 'intro') {
+                sacredElements.intro.classList.add('active');
+            } else if (sacredQuizState.currentSection === 'questions') {
+                sacredElements.questions.classList.add('active');
+            } else if (sacredQuizState.currentSection === 'results') {
+                sacredElements.results.classList.add('active');
+                displayResults();
+            }
+        }
+        
+        // Show Question
+        function showQuestion(index) {
+            const allQuestions = [
+                ...quizData.primalQuestions, 
+                ...quizData.heartQuestions, 
+                ...quizData.mindQuestions, 
+                ...quizData.energeticQuestions, 
+                ...quizData.orgasmicQuestions
+            ];
+            const question = allQuestions[index];
+            
+            if (!question) return;
+            
+            let questionHTML = `
+                <div class="sacred-question">
+                    <h3 class="sacred-question-text">${question.text}</h3>
+            `;
+            
+            if (question.type === "scale") {
+                questionHTML += `<div class="sacred-scale-container">`;
+                
+                if (question.category === "orgasmic") {
+                    // Orgasmic questions have 5 options but we'll use 1-10 scale
+                    questionHTML += `
+                        <div class="sacred-scale">
+                            <span class="sacred-scale-label">${question.options[0]}</span>
+                            <span class="sacred-scale-label">${question.options[4]}</span>
+                        </div>
+                        <div class="sacred-number-scale">
+                            <div class="sacred-number-labels">
+                                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                            </div>
+                            <input type="range" class="sacred-scale-slider" min="1" max="10" value="${getAnswerValue(index) ? getAnswerValue(index) * 2.5 : 1}">
+                            <div class="sacred-selected-value">Selected: <span id="selected-value-${index}">1</span></div>
+                        </div>
+                    `;
+                } else {
+                    // Archetype questions have 4 options but we'll use 1-10 scale
+                    questionHTML += `
+                        <div class="sacred-scale">
+                            <span class="sacred-scale-label">${question.options[0]}</span>
+                            <span class="sacred-scale-label">${question.options[3]}</span>
+                        </div>
+                        <div class="sacred-number-scale">
+                            <div class="sacred-number-labels">
+                                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                            </div>
+                            <input type="range" class="sacred-scale-slider" min="1" max="10" value="${getAnswerValue(index) ? getAnswerValue(index) * 3.33 : 1}">
+                            <div class="sacred-selected-value">Selected: <span id="selected-value-${index}">1</span></div>
+                        </div>
+                    `;
+                }
+                
+                questionHTML += `</div>`;
+            }
+            
+            questionHTML += `</div>`;
+            
+            sacredElements.questionContainer.innerHTML = questionHTML;
+            
+            // Update progress bar
+            const progress = ((index + 1) / allQuestions.length) * 100;
+            sacredElements.progressBar.style.width = `${progress}%`;
+            
+            // Update question counter
+            document.getElementById('sacred-current-question').textContent = index + 1;
+            document.getElementById('sacred-total-questions').textContent = allQuestions.length;
+            
+            // Update button states
+            sacredElements.prevButton.disabled = index === 0;
+            
+            if (index === allQuestions.length - 1) {
+                sacredElements.nextButton.textContent = "See Results";
+            } else {
+                sacredElements.nextButton.textContent = "Next";
+            }
+            
+            // Add event listener to slider
+            const slider = sacredElements.questionContainer.querySelector('.sacred-scale-slider');
+            if (slider) {
+                slider.addEventListener('input', () => {
+                    // Update the selected value display
+                    const selectedValueDisplay = document.getElementById(`selected-value-${index}`);
+                    if (selectedValueDisplay) {
+                        selectedValueDisplay.textContent = slider.value;
+                    }
+                    
+                    // Convert 1-10 scale to the original scale for saving
+                    let convertedValue;
+                    if (question.category === "orgasmic") {
+                        // Convert 1-10 scale to 0-4 scale for orgasmic questions
+                        convertedValue = Math.round((slider.value - 1) / 9 * 4);
+                    } else {
+                        // Convert 1-10 scale to 0-3 scale for archetype questions
+                        convertedValue = Math.round((slider.value - 1) / 9 * 3);
+                    }
+                    
+                    saveAnswer(index, convertedValue);
+                });
+            }
+        }
+        
+        // Get Answer Value
+        function getAnswerValue(questionIndex) {
+            const answer = sacredQuizState.answers.find(a => a.questionIndex === questionIndex);
+            return answer ? answer.value : 0;
+        }
+        
+        // Save Answer
+        function saveAnswer(questionIndex, value) {
+            const allQuestions = [...quizData.archetypeQuestions, ...quizData.orgasmicQuestions];
+            const question = allQuestions[questionIndex];
+            
+            // Remove existing answer if any
+            sacredQuizState.answers = sacredQuizState.answers.filter(a => a.questionIndex !== questionIndex);
+            
+            // Add new answer
+            sacredQuizState.answers.push({
+                questionIndex,
+                value,
+                archetype: question.archetypes ? question.archetypes[value] : null,
+                category: question.category || 'archetype'
+            });
+        }
+        
+        // Show Previous Question
+        function showPreviousQuestion() {
+            if (sacredQuizState.currentQuestionIndex > 0) {
+                sacredQuizState.currentQuestionIndex--;
+                showQuestion(sacredQuizState.currentQuestionIndex);
+            }
+        }
+        
+        // Handle Next Button
+        function handleNextButton() {
+            const allQuestions = [...quizData.archetypeQuestions, ...quizData.orgasmicQuestions];
+            
+            // Save current answer if not already saved
+            const slider = sacredElements.questionContainer.querySelector('.sacred-scale-slider');
+            if (slider) {
+                saveAnswer(sacredQuizState.currentQuestionIndex, parseInt(slider.value));
+            }
+            
+            if (sacredQuizState.currentQuestionIndex < allQuestions.length - 1) {
+                sacredQuizState.currentQuestionIndex++;
+                showQuestion(sacredQuizState.currentQuestionIndex);
+            } else {
+                calculateResults();
+                sacredQuizState.currentSection = 'results';
+                updateQuizDisplay();
+            }
+        }
+        
+        // Calculate Results
+        function calculateResults() {
+            // Calculate archetype percentages
+            const archetypeCounts = {
+                primal: 0,
+                heart: 0,
+                mind: 0,
+                energetic: 0
+            };
+            
+            const archetypeAnswers = sacredQuizState.answers.filter(a => a.category === 'archetype');
+            
+            archetypeAnswers.forEach(answer => {
+                if (answer.archetype) {
+                    archetypeCounts[answer.archetype]++;
+                }
+            });
+            
+            const totalArchetypeAnswers = archetypeAnswers.length;
+            
+            sacredQuizState.results.archetypes = {
+                primal: Math.round((archetypeCounts.primal / totalArchetypeAnswers) * 100),
+                heart: Math.round((archetypeCounts.heart / totalArchetypeAnswers) * 100),
+                mind: Math.round((archetypeCounts.mind / totalArchetypeAnswers) * 100),
+                energetic: Math.round((archetypeCounts.energetic / totalArchetypeAnswers) * 100)
+            };
+            
+            // Determine dominant archetype
+            let dominantArchetype = 'primal';
+            let highestScore = sacredQuizState.results.archetypes.primal;
+            
+            if (sacredQuizState.results.archetypes.heart > highestScore) {
+                dominantArchetype = 'heart';
+                highestScore = sacredQuizState.results.archetypes.heart;
+            }
+            
+            if (sacredQuizState.results.archetypes.mind > highestScore) {
+                dominantArchetype = 'mind';
+                highestScore = sacredQuizState.results.archetypes.mind;
+            }
+            
+            if (sacredQuizState.results.archetypes.energetic > highestScore) {
+                dominantArchetype = 'energetic';
+                highestScore = sacredQuizState.results.archetypes.energetic;
+            }
+            
+            sacredQuizState.results.dominantArchetype = dominantArchetype;
+            
+            // Calculate orgasmic score
+            const orgasmicAnswers = sacredQuizState.answers.filter(a => a.category === 'orgasmic');
+            if (orgasmicAnswers.length > 0) {
+                const totalPossiblePoints = orgasmicAnswers.length * 4; // 0-4 scale, max is 4
+                let totalPoints = 0;
+                
+                orgasmicAnswers.forEach(answer => {
+                    totalPoints += answer.value;
+                });
+                
+                sacredQuizState.results.orgasmicScore = Math.round((totalPoints / totalPossiblePoints) * 100);
+                
+                // Determine orgasmic category
+                if (sacredQuizState.results.orgasmicScore < 20) {
+                    sacredQuizState.results.orgasmicCategory = 'beginner';
+                } else if (sacredQuizState.results.orgasmicScore < 40) {
+                    sacredQuizState.results.orgasmicCategory = 'developing';
+                } else if (sacredQuizState.results.orgasmicScore < 60) {
+                    sacredQuizState.results.orgasmicCategory = 'intermediate';
+                } else if (sacredQuizState.results.orgasmicScore < 80) {
+                    sacredQuizState.results.orgasmicCategory = 'advanced';
+                } else {
+                    sacredQuizState.results.orgasmicCategory = 'master';
+                }
+            }
+        }
+        
+        // Display Results
+        function displayResults() {
+            displayArchetypeResults();
+            displayOrgasmicLivingResults();
+        }
+        
+        // Handle Email Submit
+        function handleEmailSubmit() {
+            // In a real implementation, this would send the results to the user's email
+            sacredElements.emailMessage.style.display = 'block';
+            setTimeout(() => {
+                sacredElements.emailMessage.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,2011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacred Sexuality Quiz</title>
+    <style>
+/* Sacred Sexuality Quiz Styles - Updated with larger fonts */
+.sacred-quiz-container {
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    font-size: 20px; /* Base font size increased */
+}
+
+.sacred-quiz-container h1, 
+.sacred-quiz-container h2, 
+.sacred-quiz-container h3, 
+.sacred-quiz-container h4, 
+.sacred-quiz-container h5, 
+.sacred-quiz-container h6 {
+    font-family: Georgia, serif;
+    margin-top: 32px;
+    margin-bottom: 16px;
+}
+
+.sacred-quiz-container h1 {
+    font-size: 3.5rem; /* Increased from 2.5rem */
+    text-align: center;
+}
+
+.sacred-quiz-container h2 {
+    font-size: 3rem; /* Increased from 2rem */
+}
+
+.sacred-quiz-container h3 {
+    font-size: 2.5rem; /* Increased from 1.5rem */
+}
+
+.sacred-quiz-container h4 {
+    font-size: 2rem; /* Added for completeness */
+}
+
+.sacred-quiz-container p {
+    margin-bottom: 16px;
+    font-size: 20px; /* Increased from default */
+}
+
+.sacred-quiz-container button {
+    background-color: #d4a373;
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.5rem; /* Increased from 1rem */
+    transition: background-color 0.3s;
+}
+
+.sacred-quiz-container button:hover {
+    background-color: #9c6644;
+}
+
+.sacred-quiz-container button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.sacred-quiz-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.sacred-quiz-header p {
+    font-size: 1.8rem; /* Increased from 1.2rem */
+    color: #d4a373;
+}
+
+.sacred-quiz-logo {
+    max-width: 300px;
+    margin: 0 auto 20px;
+    display: block;
+}
+
+.sacred-quiz-section {
+    display: none;
+}
+
+.sacred-quiz-section.active {
+    display: block;
+}
+
+.sacred-quiz-intro {
+    text-align: center;
+}
+
+.sacred-scroll-message {
+    background-color: #f2e9e4;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: center;
+    font-weight: bold;
+    color: #9c6644;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+.sacred-archetype-description {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    text-align: left;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: #f2e9e4;
+    font-size: 20px; /* Increased from default */
+}
+
+.sacred-archetype-icon {
+    width: 50px; /* Increased from 40px */
+    height: 50px; /* Increased from 40px */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    margin-right: 16px;
+    flex-shrink: 0;
+    font-size: 24px; /* Added for larger text in icon */
+}
+
+.sacred-primal-icon {
+    background-color: #e94f37;
+}
+
+.sacred-heart-icon {
+    background-color: #f9a7b0;
+}
+
+.sacred-mind-icon {
+    background-color: #8a4fff;
+}
+
+.sacred-energetic-icon {
+    background-color: #3066be;
+}
+
+.sacred-progress-container {
+    margin-bottom: 32px;
+}
+
+.sacred-progress-bar {
+    height: 14px; /* Increased from 10px */
+    background-color: #eee;
+    border-radius: 7px; /* Increased from 5px */
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+.sacred-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #d4a373, #9c6644);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.sacred-section-indicator {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sacred-section-dot {
+    width: 16px; /* Increased from 12px */
+    height: 16px; /* Increased from 12px */
+    border-radius: 50%;
+    background-color: #ddd;
+    transition: background-color 0.3s ease;
+}
+
+.sacred-section-dot.active {
+    background-color: #d4a373;
+}
+
+.sacred-section-intro {
+    margin-bottom: 32px;
+}
+
+.sacred-question-container {
+    margin-bottom: 32px;
+}
+
+.sacred-question {
+    font-size: 1.8rem; /* Increased from 1.2rem */
+    margin-bottom: 16px;
+}
+
+.sacred-scale-container {
+    width: 100%;
+}
+
+.sacred-scale-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    font-size: 1.3rem; /* Increased from 0.9rem */
+    color: #666;
+}
+
+.sacred-slider {
+    width: 100%;
+    height: 14px; /* Increased from 10px */
+    -webkit-appearance: none;
+    appearance: none;
+    background: #eee;
+    outline: none;
+    border-radius: 7px; /* Increased from 5px */
+    margin-bottom: 8px;
+}
+
+.sacred-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 28px; /* Increased from 20px */
+    height: 28px; /* Increased from 20px */
+    border-radius: 50%;
+    background: #d4a373;
+    cursor: pointer;
+}
+
+.sacred-slider::-moz-range-thumb {
+    width: 28px; /* Increased from 20px */
+    height: 28px; /* Increased from 20px */
+    border-radius: 50%;
+    background: #d4a373;
+    cursor: pointer;
+}
+
+.sacred-scale-value {
+    text-align: center;
+    font-weight: bold;
+    color: #d4a373;
+    font-size: 1.5rem; /* Increased from default */
+}
+
+.sacred-yes-no-container {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.sacred-yes-no-btn {
+    padding: 16px 32px;
+    min-width: 120px; /* Increased from 100px */
+    font-size: 1.5rem; /* Increased from default */
+}
+
+.sacred-yes-no-btn.selected {
+    background-color: #9c6644;
+}
+
+.sacred-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 48px;
+}
+
+.sacred-bar-chart-container {
+    margin: 32px 0;
+    padding: 16px;
+    background-color: #f2e9e4;
+    border-radius: 8px;
+    font-size: 20px; /* Increased from default */
+}
+
+.sacred-bar {
+    height: 40px;
+    margin: 15px 0;
+    border-radius: 5px;
+    position: relative;
+}
+
+.sacred-bar-label {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+
+.sacred-bar-value {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+
+.sacred-primal-bar {
+    background-color: #e94f37;
+}
+
+.sacred-heart-bar {
+    background-color: #f9a7b0;
+}
+
+.sacred-mind-bar {
+    background-color: #8a4fff;
+}
+
+.sacred-energetic-bar {
+    background-color: #3066be;
+}
+
+.sacred-result-description {
+    margin: 32px 0;
+    font-size: 20px; /* Increased from default */
+}
+
+.sacred-recommendations {
+    margin: 32px 0;
+}
+
+.sacred-recommendation-item {
+    padding: 16px;
+    margin-bottom: 16px;
+    background-color: #f2e9e4;
+    border-radius: 8px;
+    border-left: 4px solid #d4a373;
+    font-size: 20px; /* Increased from default */
+}
+
+/* List items in results */
+.sacred-quiz-container ul li {
+    font-size: 20px; /* Increased from default */
+    margin-bottom: 8px;
+}
+
+.sacred-email-form {
+    margin: 32px 0;
+    padding: 20px;
+    background-color: #f2e9e4;
+    border-radius: 8px;
+}
+
+.sacred-email-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 18px;
+}
+
+.sacred-email-form button {
+    width: 100%;
+}
+
+.sacred-footer {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+}
+
+.sacred-footer a {
+    color: #d4a373;
+    text-decoration: none;
+}
+
+.sacred-footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .sacred-quiz-container {
+        padding: 16px;
+        font-size: 18px; /* Slightly smaller on mobile but still larger than original */
+    }
+    
+    .sacred-quiz-container h1 {
+        font-size: 2.8rem; /* Adjusted for mobile */
+    }
+    
+    .sacred-quiz-container h2 {
+        font-size: 2.3rem; /* Adjusted for mobile */
+    }
+    
+    .sacred-quiz-container h3 {
+        font-size: 2rem; /* Adjusted for mobile */
+    }
+    
+    .sacred-archetype-description {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .sacred-archetype-icon {
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+    
+    .sacred-yes-no-container {
+        flex-direction: column;
+    }
+    
+    .sacred-yes-no-btn {
+        width: 100%;
+    }
+    
+    .sacred-question {
+        font-size: 1.5rem; /* Adjusted for mobile */
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="sacred-quiz-container">
+        <header class="sacred-quiz-header">
+            <img src="logo.png" alt="Honors Yoga Logo" class="sacred-quiz-logo">
+            <h1>Sacred Sexuality Quiz</h1>
+            <p>Discover your sexual self through this interactive journey</p>
+        </header>
+        
+        <!-- Introduction Section -->
+        <section id="sacred-intro" class="sacred-quiz-section sacred-quiz-intro active">
+            <h2>Welcome to Your Journey of Sexual Self-Discovery</h2>
+            <p>This interactive experience will help you discover your sexual self by exploring your dominant sexual archetypes and orgasmic potential. The quiz consists of two parts:</p>
+            
+            <div class="sacred-archetype-description">
+                <div class="sacred-archetype-icon sacred-primal-icon">P</div>
+                <div>
+                    <strong>Primal:</strong> Body-centered, passionate, and sensory. This archetype connects with physical attraction, power dynamics, and raw sexual energy.
+                </div>
+            </div>
+            
+            <div class="sacred-archetype-description">
+                <div class="sacred-archetype-icon sacred-heart-icon">H</div>
+                <div>
+                    <strong>Heart:</strong> Connection-centered, emotional, and intimate. This archetype values vulnerability, safety, and the emotional dimensions of sexuality.
+                </div>
+            </div>
+            
+            <div class="sacred-archetype-description">
+                <div class="sacred-archetype-icon sacred-mind-icon">M</div>
+                <div>
+                    <strong>Mind:</strong> Thought-centered, verbal, and fantasy-driven. This archetype engages with the intellectual aspects of sexuality, including fantasies and conscious awareness.
+                </div>
+            </div>
+            
+            <div class="sacred-archetype-description">
+                <div class="sacred-archetype-icon sacred-energetic-icon">E</div>
+                <div>
+                    <strong>Energetic/Psychic:</strong> Energy-centered, spiritual, and transcendent. This archetype explores the subtle energies, spiritual connection, and transformative potential of sexuality.
+                </div>
+            </div>
+            
+            <p>The quiz also includes an Orgasmic Living Test to explore your orgasmic experiences and potential.</p>
+            
+            <p>Your responses are completely private and will only be used to generate your personalized results. Take your time with each question and answer honestly for the most accurate insights.</p>
+            
+            <div class="sacred-navigation">
+                <button id="sacred-start-btn">Begin Your Journey</button>
+            </div>
+        </section>
+        
+        <!-- Question Section -->
+        <section id="sacred-question-section" class="sacred-quiz-section">
+            <div class="sacred-scroll-message" id="sacred-scroll-message">
+                Please scroll down to view and answer all questions
+            </div>
+            
+            <div class="sacred-progress-container">
+                <div class="sacred-progress-bar">
+                    <div class="sacred-progress-fill" id="sacred-progress-fill"></div>
+                </div>
+                <div class="sacred-section-indicator">
+                    <div class="sacred-section-dot active"></div>
+                    <div class="sacred-section-dot"></div>
+                    <div class="sacred-section-dot"></div>
+                    <div class="sacred-section-dot"></div>
+                    <div class="sacred-section-dot"></div>
+                </div>
+            </div>
+            
+            <div id="sacred-section-intro" class="sacred-section-intro">
+                <!-- Section intro will be inserted here -->
+            </div>
+            
+            <div class="sacred-question-container">
+                <!-- Question will be inserted here -->
+            </div>
+            
+            <div class="sacred-navigation">
+                <button class="sacred-back-btn" id="sacred-back-btn">Back</button>
+                <button id="sacred-next-btn">Next</button>
+            </div>
+        </section>
+        
+        <!-- Results Section -->
+        <section id="sacred-results" class="sacred-quiz-section">
+            <h2>Your Sacred Sexuality Profile</h2>
+            
+            <div class="sacred-bar-chart-container">
+                <h3>Your Archetype Distribution</h3>
+                <!-- Bar chart will be inserted here -->
+            </div>
+            
+            <div class="sacred-result-description">
+                <!-- Archetype description will be inserted here -->
+            </div>
+            
+            <div class="sacred-recommendations">
+                <!-- Recommendations will be inserted here -->
+            </div>
+            
+            <div class="sacred-email-form">
+                <h3>Save Your Results</h3>
+                <p>Enter your email to receive your detailed results:</p>
+                <input type="email" id="sacred-email-input" placeholder="Your email address">
+                <button id="sacred-email-btn">Email My Results</button>
+                <div id="sacred-email-message"></div>
+            </div>
+            
+            <div class="sacred-navigation">
+                <button id="sacred-restart-btn">Retake Quiz</button>
+            </div>
+            
+            <div class="sacred-footer">
+                <p>Created by <a href="https://www.honors-yoga.com" target="_blank">Honors Yoga</a> | Visit our website for more resources on sacred sexuality and tantra</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+// Sacred Sexuality Quiz Data
+
+const sacredQuizData = {
+    // Quiz sections with questions
+    sections: [
+        {
+            id: "primal",
+            title: "Primal Archetype",
+            intro: "Now we'll explore aspects of your sexuality related to physical sensations, attraction, and primal desires. These questions help identify your connection to the Primal archetype.",
+            questions: [
+                {
+                    text: "How important is physical attraction in a sexual encounter?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Extremely important"
+                },
+                {
+                    text: "How interested are you in having a dominant partner?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not interested",
+                    maxLabel: "Very interested"
+                },
+                {
+                    text: "How interested are you in having a submissive partner?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not interested",
+                    maxLabel: "Very interested"
+                },
+                {
+                    text: "How much does your partner's physical body correlate to a passionate fiery sexual experience?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not at all",
+                    maxLabel: "Very much"
+                },
+                {
+                    text: "How important is having a highly physically skilled partner?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Very important"
+                },
+                {
+                    text: "Rate the importance of feeling physical chemistry with a partner prior to engaging with them sexually.",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Very important"
+                },
+                {
+                    text: "How important is the smell of your partner during intimacy?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Very important"
+                },
+                {
+                    text: "How important is maintaining good sexual chemistry with your partner(s)?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Very important"
+                },
+                {
+                    text: "How important is it to keep your sex life spicy (trying new positions, incorporating BDSM, etc.)?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Very important"
+                },
+                {
+                    text: "How important is it for your partner(s) to express strong feminine/masculine qualities?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Very important"
+                },
+                {
+                    text: "Do you enjoy spanking?",
+                    type: "yesno"
+                },
+                {
+                    text: "Do you enjoy blindfolds?",
+                    type: "yesno"
+                },
+                {
+                    text: "Do you enjoy handcuffs?",
+                    type: "yesno"
+                },
+                {
+                    text: "Are you turned on by moans and sounds during sex?",
+                    type: "yesno"
+                },
+                {
+                    text: "Do you like dirty talk?",
+                    type: "yesno"
+                },
+                {
+                    text: "Do you like your partner(s) to be rough (i.e., biting, scratching, hair pulling, etc.)?",
+                    type: "yesno"
+                },
+                {
+                    text: "Would you have sex with someone you're not physically attracted to?",
+                    type: "yesno"
+                },
+                {
+                    text: "If you had sex with someone not physically attractive to you but the sex was amazing, would you have sex with them again?",
+                    type: "yesno"
+                }
+            ]
+        },
+        {
+            id: "heart",
+            title: "Heart Archetype",
+            intro: "Let's shift focus to the emotional and connection aspects of your sexuality. These questions help identify your connection to the Heart archetype.",
+            questions: [
+                {
+                    text: "How important is safe space during intimate encounters?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Very important"
+                },
+                {
+                    text: "How important is the energy of love during the sexual encounter?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Very important"
+                },
+                {
+                    text: "How important is intimacy and vulnerability?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Very important"
+                },
+                {
+                    text: "How comfortable are you to openly express your sexual desires with your partner?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not comfortable",
+                    maxLabel: "Very comfortable"
+                },
+                {
+                    text: "How comfortable are you to be honest about your sexual desires with yourself?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not comfortable",
+                    maxLabel: "Very comfortable"
+                },
+                {
+                    text: "How important is knowing/understanding your partner's traumas prior to engaging with them sexually?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Very important"
+                },
+                {
+                    text: "How important is it that you are friends with the person you are being intimate with?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Very important"
+                },
+                {
+                    text: "On a scale from 1 to 10, how well do you receive constructive sexual criticism?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not well",
+                    maxLabel: "Very well"
+                },
+                {
+                    text: "How important is it for you to create a safe environment for open and honest communication between yourself and your partner(s)?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Very important"
+                },
+                {
+                    text: "How important is emotional intelligence in a sexual partner?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Very important"
+                },
+                {
+                    text: "Do you feel emotionally present/expressive during sex?",
+                    type: "yesno"
+                },
+                {
+                    text: "Do you stare into the other person's eyes during sex?",
+                    type: "yesno"
+                },
+                {
+                    text: "Do you want someone that will stare in your eyes during sex?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you ever had a cry-gasm?",
+                    type: "yesno"
+                },
+                {
+                    text: "Would you lose attraction if someone cried during sex?",
+                    type: "yesno"
+                },
+                {
+                    text: "Do you enjoy intimate foreplay?",
+                    type: "yesno"
+                },
+                {
+                    text: "Are you turned on by deeply personal conversations?",
+                    type: "yesno"
+                },
+                {
+                    text: "Do you feel being in love makes the sexual experience better?",
+                    type: "yesno"
+                }
+            ]
+        },
+        {
+            id: "mind",
+            title: "Mind Archetype",
+            intro: "Now we'll explore the mental and intellectual dimensions of your sexuality. These questions help identify your connection to the Mind archetype.",
+            questions: [
+                {
+                    text: "How often do you fantasize about possible sexual experiences?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Rarely",
+                    maxLabel: "Very often"
+                },
+                {
+                    text: "How important is intelligence in a sexual partner?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Very important"
+                },
+                {
+                    text: "How often do you learn things from porn and try them in the bedroom?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Never",
+                    maxLabel: "Very often"
+                },
+                {
+                    text: "How often do you use visualization to enhance your experience during sex?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Never",
+                    maxLabel: "Very often"
+                },
+                {
+                    text: "How important is verbal feedback from your partner during sex?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Very important"
+                },
+                {
+                    text: "How often do you use orgasm as a space for manifestation?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Never",
+                    maxLabel: "Very often"
+                },
+                {
+                    text: "How important is it to be present in the moment during sex?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Very important"
+                },
+                {
+                    text: "How often do you feel disconnected from your body during sex?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Never",
+                    maxLabel: "Very often"
+                },
+                {
+                    text: "How often do you spend too much time in your head during sex?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Never",
+                    maxLabel: "Very often"
+                },
+                {
+                    text: "How important is exploring your sexual fantasies during intimacy?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Very important"
+                },
+                {
+                    text: "Are you a sapiosexual? (turned on by the way someone's mind works)",
+                    type: "yesno"
+                },
+                {
+                    text: "Is lack of intelligence a turn off?",
+                    type: "yesno"
+                },
+                {
+                    text: "Do you enjoy exploring your partner's sexual fantasies during intimacy?",
+                    type: "yesno"
+                },
+                {
+                    text: "Do you tend to be attracted to intellectuals?",
+                    type: "yesno"
+                },
+                {
+                    text: "Do you like phone sex?",
+                    type: "yesno"
+                },
+                {
+                    text: "Are you an over-thinker?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you ever thought of a different person while having sex?",
+                    type: "yesno"
+                },
+                {
+                    text: "Do you use mental skills as a primary form of sexual engagement?",
+                    type: "yesno"
+                }
+            ]
+        },
+        {
+            id: "energetic",
+            title: "Energetic/Psychic Archetype",
+            intro: "Let's explore the energetic and spiritual dimensions of your sexuality. These questions help identify your connection to the Energetic/Psychic archetype.",
+            questions: [
+                {
+                    text: "How important is music to your bedroom experience?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Very important"
+                },
+                {
+                    text: "How important are mood enhancers (candles, lights, fragrances) during sex?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Very important"
+                },
+                {
+                    text: "How important is location during sex?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Very important"
+                },
+                {
+                    text: "Does time of day affect the sexual experience?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not at all",
+                    maxLabel: "Very much"
+                },
+                {
+                    text: "How easily do you get in the mood?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Very difficult",
+                    maxLabel: "Very easy"
+                },
+                {
+                    text: "How often do you feel drained after a sexual encounter?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Never",
+                    maxLabel: "Always"
+                },
+                {
+                    text: "How much physical stamina do you have during sex?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Very little",
+                    maxLabel: "Very much"
+                },
+                {
+                    text: "How much do you experience the other person's energy still being merged with yours after sex is over?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not at all",
+                    maxLabel: "Very much"
+                },
+                {
+                    text: "How important is it to use sexual energy for spiritual growth?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Very important"
+                },
+                {
+                    text: "How important is it to use sexual energy you have cultivated to be creative, manifest, or heal?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Not important",
+                    maxLabel: "Very important"
+                },
+                {
+                    text: "Do you experience energetic orgasms during sex?",
+                    type: "yesno"
+                },
+                {
+                    text: "Are you turned by a person's aura?",
+                    type: "yesno"
+                },
+                {
+                    text: "Do you enjoy having astral sex?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you ever had sex during dreams?",
+                    type: "yesno"
+                },
+                {
+                    text: "Do you gain or lose energy during the sexual experience?",
+                    type: "yesno",
+                    yesLabel: "Gain",
+                    noLabel: "Lose"
+                },
+                {
+                    text: "Do you practice semen retention?",
+                    type: "yesno"
+                },
+                {
+                    text: "Do you consciously circulate sexual energy throughout your body during sex?",
+                    type: "yesno"
+                },
+                {
+                    text: "Do you consciously circulate sexual energy between you and your partner during sex?",
+                    type: "yesno"
+                },
+                {
+                    text: "Do you experience becoming one with a person during sex?",
+                    type: "yesno"
+                },
+                {
+                    text: "Do you enjoy having sex in front of a mirror?",
+                    type: "yesno"
+                }
+            ]
+        },
+        {
+            id: "orgasmic",
+            title: "Orgasmic Living Test",
+            intro: "Now we'll explore your orgasmic experiences. This section helps assess your orgasmic potential and diversity of experiences.",
+            questions: [
+                {
+                    text: "Have you experienced extended orgasmic states (2 mins or more)?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you experienced multiple orgasms?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you used orgasmic energy for healing?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you experienced non-sexual orgasmic experiences (nature, food, sensory)?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you experienced spiritual orgasms (thought/breath, conscious, meditative)?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you experienced dream-gasms?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you experienced vaginal orgasms?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you experienced chakra orgasms?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you experienced full body orgasms?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you experienced throat orgasms?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you experienced anal orgasms?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you experienced G-spot orgasms/squirting?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you experienced cervical orgasms?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you experienced orgasms from body organs other than genitals?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you experienced breast orgasms?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you experienced cry-gasms during sex?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you experienced laugh-gasms during sex?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you experienced valley orgasms?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you experienced music-gasms?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you experienced birth-gasms?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you experienced pain-gasms?",
+                    type: "yesno"
+                },
+                {
+                    text: "Have you experienced self-induced sexual orgasms?",
+                    type: "yesno"
+                },
+                {
+                    text: "Rate your orgasmic ease during sex",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Very difficult",
+                    maxLabel: "Very easy"
+                },
+                {
+                    text: "How long do you usually take before orgasm?",
+                    type: "scale",
+                    min: 1,
+                    max: 10,
+                    minLabel: "Under 5 mins",
+                    maxLabel: "Over an hour"
+                }
+            ]
+        }
+    ],
+    
+    // Archetype descriptions for results
+    archetypeDescriptions: {
+        primal: {
+            title: "Primal Archetype",
+            description: "You are primarily driven by physical sensations, passion, and primal desires in your sexuality. The body and its pleasures are central to your sexual experience. You value physical attraction, sensory stimulation, and the raw power of sexual energy.",
+            strengths: [
+                "Strong connection to physical pleasure and bodily sensations",
+                "Passionate and intense sexual experiences",
+                "Clear about physical desires and boundaries",
+                "Appreciation for the sensory aspects of sexuality"
+            ],
+            growthAreas: [
+                "Developing deeper emotional connections during intimacy",
+                "Exploring the mental and spiritual dimensions of sexuality",
+                "Finding balance between physical desires and other aspects of sexuality"
+            ],
+            recommendations: [
+                "Explore tantric practices that honor physical pleasure while expanding awareness",
+                "Experiment with conscious sensory experiences (mindful touch, breath work)",
+                "Consider how physical passion can be a gateway to deeper connection"
+            ],
+            programs: [
+                "Tantra for Couples: Passionate Connection",
+                "Embodied Sexuality Workshops",
+                "Sacred Sexuality Foundations (with focus on body practices)"
+            ]
+        },
+        heart: {
+            title: "Heart Archetype",
+            description: "Your sexuality is primarily centered around emotional connection, intimacy, and vulnerability. Love and relationship are essential components of your sexual expression. You value safety, trust, and emotional resonance in your intimate encounters.",
+            strengths: [
+                "Deep capacity for emotional intimacy and connection",
+                "Ability to create safe, nurturing spaces for vulnerability",
+                "Strong empathy and attunement to partners",
+                "Integration of love and sexuality"
+            ],
+            growthAreas: [
+                "Embracing raw passion and primal desires",
+                "Developing comfort with sexual expression outside of emotional contexts",
+                "Finding balance between giving and receiving"
+            ],
+            recommendations: [
+                "Explore practices that balance heart-centered connection with physical passion",
+                "Experiment with expressing desires and boundaries more directly",
+                "Consider how emotional intimacy can enhance rather than replace physical pleasure"
+            ],
+            programs: [
+                "Tantra for Couples: Deepening Intimacy",
+                "Heart-Centered Sexuality Workshops",
+                "Sacred Sexuality Foundations (with focus on emotional practices)"
+            ]
+        },
+        mind: {
+            title: "Mind Archetype",
+            description: "Your sexuality is primarily intellectual and fantasy-driven. The mental aspects of sex—imagination, fantasies, verbal expression—are central to your experience. You value mental stimulation, creative exploration, and conscious awareness in your sexuality.",
+            strengths: [
+                "Rich fantasy life and creative sexual imagination",
+                "Ability to articulate desires and boundaries",
+                "Appreciation for the intellectual aspects of sexuality",
+                "Conscious awareness during intimate encounters"
+            ],
+            growthAreas: [
+                "Developing deeper embodiment and physical presence",
+                "Balancing thinking with feeling and sensing",
+                "Letting go of overthinking during intimate encounters"
+            ],
+            recommendations: [
+                "Explore practices that help ground mental energy in the body",
+                "Experiment with mindfulness techniques during intimacy",
+                "Consider how intellectual exploration can enhance rather than replace physical and emotional connection"
+            ],
+            programs: [
+                "Conscious Sexuality Workshops",
+                "Tantra Philosophy and Practice",
+                "Sacred Sexuality Foundations (with focus on awareness practices)"
+            ]
+        },
+        energetic: {
+            title: "Energetic/Psychic Archetype",
+            description: "Your sexuality is primarily spiritual and energetic in nature. You experience sex as an energy exchange and potentially transcendent experience. You value the subtle, energetic dimensions of sexuality and its connection to spiritual growth.",
+            strengths: [
+                "Awareness of subtle energies and their movement",
+                "Capacity for transcendent sexual experiences",
+                "Integration of sexuality and spirituality",
+                "Ability to channel sexual energy for healing and transformation"
+            ],
+            growthAreas: [
+                "Grounding spiritual experiences in the physical body",
+                "Balancing transcendent aspects with emotional connection",
+                "Avoiding spiritual bypassing of physical or emotional aspects"
+            ],
+            recommendations: [
+                "Explore practices that balance spiritual awareness with embodiment",
+                "Experiment with conscious energy circulation techniques",
+                "Consider how energetic awareness can enhance rather than replace physical and emotional dimensions"
+            ],
+            programs: [
+                "Advanced Tantra Practices",
+                "Energy Circulation Workshops",
+                "Sacred Sexuality Foundations (with focus on spiritual practices)"
+            ]
+        }
+    },
+    
+    // Orgasmic Living categories for results
+    orgasmicCategories: [
+        {
+            title: "Beginner Orgasmic Explorer",
+            range: [0, 20],
+            description: "You're at the beginning of your orgasmic journey. Your experiences have been primarily focused on conventional forms of orgasm, if any. There's a vast world of orgasmic potential waiting for you to discover.",
+            recommendations: [
+                "Focus on self-pleasure and self-discovery without pressure",
+                "Explore basic breath work and body awareness practices",
+                "Learn about different types of orgasms through reading and education"
+            ]
+        },
+        {
+            title: "Developing Orgasmic Awareness",
+            range: [21, 40],
+            description: "You've begun to explore beyond conventional orgasmic experiences. You're developing awareness of your body's potential for pleasure and may have experienced a few different types of orgasms.",
+            recommendations: [
+                "Experiment with different forms of stimulation and orgasmic experiences",
+                "Practice conscious breathing during sexual experiences",
+                "Explore tantric techniques for expanding orgasmic potential"
+            ]
+        },
+        {
+            title: "Intermediate Orgasmic Adventurer",
+            range: [41, 60],
+            description: "You have a good understanding of your orgasmic potential and have experienced several different types of orgasms. You're comfortable exploring new dimensions of pleasure and are open to expanding further.",
+            recommendations: [
+                "Deepen practices that have been successful for you",
+                "Explore energy circulation techniques during orgasm",
+                "Consider how emotional and spiritual dimensions can enhance orgasmic experiences"
+            ]
+        },
+        {
+            title: "Advanced Orgasmic Practitioner",
+            range: [61, 80],
+            description: "You have extensive experience with various types of orgasms and understand how to create diverse orgasmic experiences. You likely have practices that help you access different orgasmic states.",
+            recommendations: [
+                "Refine your ability to direct orgasmic energy for specific purposes",
+                "Explore the healing and transformative potential of orgasmic energy",
+                "Consider sharing your knowledge with partners or communities"
+            ]
+        },
+        {
+            title: "Master Orgasmic Being",
+            range: [81, 100],
+            description: "You have mastered multiple dimensions of orgasmic experience and can access diverse orgasmic states with relative ease. Your orgasmic experiences likely extend beyond the sexual realm into spiritual and energetic dimensions.",
+            recommendations: [
+                "Focus on integration of orgasmic wisdom into all aspects of life",
+                "Explore the most subtle and transcendent forms of orgasmic experience",
+                "Consider how your orgasmic mastery can contribute to healing and awakening"
+            ]
+        }
+    ]
+};
+
+// Sacred Sexuality Quiz Implementation
+document.addEventListener('DOMContentLoaded', function() {
+    // DOM elements
+    const sacredElements = {
+        // Sections
+        introSection: document.getElementById('sacred-intro'),
+        questionSection: document.getElementById('sacred-question-section'),
+        resultsSection: document.getElementById('sacred-results'),
+        
+        // Navigation buttons
+        startBtn: document.getElementById('sacred-start-btn'),
+        backBtn: document.getElementById('sacred-back-btn'),
+        nextBtn: document.getElementById('sacred-next-btn'),
+        restartBtn: document.getElementById('sacred-restart-btn'),
+        
+        // Question elements
+        sectionIntro: document.getElementById('sacred-section-intro'),
+        questionContainer: document.querySelector('.sacred-question-container'),
+        scrollMessage: document.getElementById('sacred-scroll-message'),
+        
+        // Progress indicators
+        progressFill: document.getElementById('sacred-progress-fill'),
+        sectionDots: document.querySelectorAll('.sacred-section-dot'),
+        
+        // Results elements
+        barChartContainer: document.querySelector('.sacred-bar-chart-container'),
+        resultDescription: document.querySelector('.sacred-result-description'),
+        recommendations: document.querySelector('.sacred-recommendations'),
+        
+        // Email elements
+        emailInput: document.getElementById('sacred-email-input'),
+        emailBtn: document.getElementById('sacred-email-btn'),
+        emailMessage: document.getElementById('sacred-email-message')
+    };
+
+    // Quiz state
+    const sacredQuizState = {
+        currentSection: 0,
+        currentQuestion: 0,
+        userResponses: {
+            primal: [],
+            heart: [],
+            mind: [],
+            energetic: [],
+            orgasmic: []
+        },
+        results: {
+            archetypes: {
+                primal: 0,
+                heart: 0,
+                mind: 0,
+                energetic: 0
+            },
+            orgasmicLiving: 0,
+            dominantArchetype: "",
+            orgasmicCategory: ""
+        }
+    };
+
+    // Initialize the quiz
+    function initQuiz() {
+        // Set up event listeners
+        setupEventListeners();
+        
+        // Show intro section
+        showSection('intro');
+    }
+
+    // Set up event listeners
+    function setupEventListeners() {
+        // Start button
+        sacredElements.startBtn.addEventListener('click', function() {
+            startQuiz();
+        });
+        
+        // Back button
+        sacredElements.backBtn.addEventListener('click', function() {
+            navigatePrevious();
+        });
+        
+        // Next button
+        sacredElements.nextBtn.addEventListener('click', function() {
+            navigateNext();
+        });
+        
+        // Restart button
+        sacredElements.restartBtn.addEventListener('click', function() {
+            restartQuiz();
+        });
+        
+        // Email button
+        sacredElements.emailBtn.addEventListener('click', function() {
+            emailResults();
+        });
+        
+        // Hide scroll message after 5 seconds
+        setTimeout(function() {
+            if (sacredElements.scrollMessage) {
+                sacredElements.scrollMessage.style.display = 'none';
+            }
+        }, 5000);
+    }
+
+    // Start the quiz
+    function startQuiz() {
+        sacredQuizState.currentSection = 0;
+        sacredQuizState.currentQuestion = 0;
+        showSection('question');
+        loadQuestion();
+        updateProgress();
+    }
+
+    // Load the current question
+    function loadQuestion() {
+        const section = sacredQuizData.sections[sacredQuizState.currentSection];
+        const question = section.questions[sacredQuizState.currentQuestion];
+        
+        // Update section intro if first question in section
+        if (sacredQuizState.currentQuestion === 0) {
+            sacredElements.sectionIntro.innerHTML = `
+                <h2>${section.title}</h2>
+                <p>${section.intro}</p>
+            `;
+            
+            // Show scroll message for first question of each section
+            if (sacredElements.scrollMessage) {
+                sacredElements.scrollMessage.style.display = 'block';
+                setTimeout(function() {
+                    sacredElements.scrollMessage.style.display = 'none';
+                }, 5000);
+            }
+        }
+        
+        // Clear previous question
+        sacredElements.questionContainer.innerHTML = '';
+        
+        // Create new question based on type
+        if (question.type === 'scale') {
+            createScaleQuestion(question);
+        } else if (question.type === 'yesno') {
+            createYesNoQuestion(question);
+        }
+        
+        // Update navigation buttons
+        updateNavigationButtons();
+    }
+
+    // Create a scale question
+    function createScaleQuestion(question) {
+        const questionHTML = `
+            <div class="sacred-question">${question.text}</div>
+            <div class="sacred-scale-container">
+                <div class="sacred-scale-labels">
+                    <span>${question.minLabel}</span>
+                    <span>${question.maxLabel}</span>
+                </div>
+                <input type="range" min="${question.min}" max="${question.max}" value="5" class="sacred-slider" id="sacred-scale-slider">
+                <div class="sacred-scale-value" id="sacred-scale-value">5</div>
+            </div>
+        `;
+        
+        sacredElements.questionContainer.innerHTML = questionHTML;
+        
+        // Add event listener to slider
+        const slider = document.getElementById('sacred-scale-slider');
+        const value = document.getElementById('sacred-scale-value');
+        
+        // Set initial value from saved response if exists
+        const sectionId = sacredQuizData.sections[sacredQuizState.currentSection].id;
+        const savedResponse = sacredQuizState.userResponses[sectionId][sacredQuizState.currentQuestion];
+        if (savedResponse !== undefined) {
+            slider.value = savedResponse;
+            value.textContent = savedResponse;
+        }
+        
+        slider.addEventListener('input', function() {
+            value.textContent = this.value;
+        });
+    }
+
+    // Create a yes/no question
+    function createYesNoQuestion(question) {
+        const yesLabel = question.yesLabel || "Yes";
+        const noLabel = question.noLabel || "No";
+        
+        const questionHTML = `
+            <div class="sacred-question">${question.text}</div>
+            <div class="sacred-yes-no-container">
+                <button class="sacred-yes-no-btn" data-value="yes">${yesLabel}</button>
+                <button class="sacred-yes-no-btn" data-value="no">${noLabel}</button>
+            </div>
+        `;
+        
+        sacredElements.questionContainer.innerHTML = questionHTML;
+        
+        // Add event listeners to yes/no buttons
+        const yesNoButtons = document.querySelectorAll('.sacred-yes-no-btn');
+        
+        // Set selected button from saved response if exists
+        const sectionId = sacredQuizData.sections[sacredQuizState.currentSection].id;
+        const savedResponse = sacredQuizState.userResponses[sectionId][sacredQuizState.currentQuestion];
+        if (savedResponse !== undefined) {
+            yesNoButtons.forEach(button => {
+                if (button.dataset.value === savedResponse) {
+                    button.classList.add('selected');
+                }
+            });
+        }
+        
+        yesNoButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove selected class from all buttons in this container
+                const container = this.parentElement;
+                container.querySelectorAll('.sacred-yes-no-btn').forEach(btn => {
+                    btn.classList.remove('selected');
+                });
+                
+                // Add selected class to clicked button
+                this.classList.add('selected');
+            });
+        });
+    }
+
+    // Navigate to the next question or section
+    function navigateNext() {
+        // Save current answer
+        saveAnswer();
+        
+        // Move to next question or section
+        sacredQuizState.currentQuestion++;
+        
+        // If we've reached the end of questions in this section
+        if (sacredQuizState.currentQuestion >= sacredQuizData.sections[sacredQuizState.currentSection].questions.length) {
+            sacredQuizState.currentQuestion = 0;
+            sacredQuizState.currentSection++;
+            
+            // If we've reached the end of all sections
+            if (sacredQuizState.currentSection >= sacredQuizData.sections.length) {
+                calculateResults();
+                showResults();
+                return;
+            }
+        }
+        
+        // Load the next question
+        loadQuestion();
+        updateProgress();
+    }
+
+    // Navigate to the previous question or section
+    function navigatePrevious() {
+        // Save current answer
+        saveAnswer();
+        
+        // Move to previous question or section
+        sacredQuizState.currentQuestion--;
+        
+        // If we've reached the beginning of questions in this section
+        if (sacredQuizState.currentQuestion < 0) {
+            sacredQuizState.currentSection--;
+            
+            // If we've reached the beginning of all sections
+            if (sacredQuizState.currentSection < 0) {
+                sacredQuizState.currentSection = 0;
+                sacredQuizState.currentQuestion = 0;
+                showSection('intro');
+                return;
+            }
+            
+            // Set to last question of previous section
+            sacredQuizState.currentQuestion = sacredQuizData.sections[sacredQuizState.currentSection].questions.length - 1;
+        }
+        
+        // Load the previous question
+        loadQuestion();
+        updateProgress();
+    }
+
+    // Save the current answer
+    function saveAnswer() {
+        const section = sacredQuizData.sections[sacredQuizState.currentSection];
+        const question = section.questions[sacredQuizState.currentQuestion];
+        let answer;
+        
+        if (question.type === 'scale') {
+            const slider = document.getElementById('sacred-scale-slider');
+            answer = parseInt(slider.value);
+        } else if (question.type === 'yesno') {
+            const selectedButton = document.querySelector('.sacred-yes-no-btn.selected');
+            answer = selectedButton ? selectedButton.dataset.value : null;
+        }
+        
+        // Store the answer in userResponses
+        if (answer !== null && answer !== undefined) {
+            sacredQuizState.userResponses[section.id][sacredQuizState.currentQuestion] = answer;
+        }
+    }
+
+    // Update the progress indicators
+    function updateProgress() {
+        // Calculate total questions and current question number
+        let totalQuestions = 0;
+        let currentQuestionNumber = 0;
+        
+        sacredQuizData.sections.forEach((section, sectionIndex) => {
+            if (sectionIndex < sacredQuizState.currentSection) {
+                currentQuestionNumber += section.questions.length;
+            } else if (sectionIndex === sacredQuizState.currentSection) {
+                currentQuestionNumber += sacredQuizState.currentQuestion;
+            }
+            totalQuestions += section.questions.length;
+        });
+        
+        // Update progress bar
+        const progressPercentage = (currentQuestionNumber / totalQuestions) * 100;
+        sacredElements.progressFill.style.width = `${progressPercentage}%`;
+        
+        // Update section dots
+        sacredElements.sectionDots.forEach((dot, index) => {
+            if (index <= sacredQuizState.currentSection) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+
+    // Update navigation buttons based on current position
+    function updateNavigationButtons() {
+        // Back button is disabled on first question of first section
+        if (sacredQuizState.currentSection === 0 && sacredQuizState.currentQuestion === 0) {
+            sacredElements.backBtn.disabled = true;
+        } else {
+            sacredElements.backBtn.disabled = false;
+        }
+        
+        // Next button text changes on last question of last section
+        if (sacredQuizState.currentSection === sacredQuizData.sections.length - 1 && 
+            sacredQuizState.currentQuestion === sacredQuizData.sections[sacredQuizState.currentSection].questions.length - 1) {
+            sacredElements.nextBtn.textContent = 'See Results';
+        } else {
+            sacredElements.nextBtn.textContent = 'Next';
+        }
+    }
+
+    // Calculate quiz results
+    function calculateResults() {
+        // Calculate archetype scores
+        calculateArchetypeScores();
+        
+        // Calculate orgasmic living score
+        calculateOrgasmicLivingScore();
+        
+        // Determine dominant archetype
+        determineDominantArchetype();
+        
+        // Determine orgasmic category
+        determineOrgasmicCategory();
+    }
+
+    // Calculate archetype scores
+    function calculateArchetypeScores() {
+        // Calculate raw scores for each archetype
+        const rawScores = {
+            primal: calculateSectionScore('primal'),
+            heart: calculateSectionScore('heart'),
+            mind: calculateSectionScore('mind'),
+            energetic: calculateSectionScore('energetic')
+        };
+        
+        // Calculate maximum possible scores
+        const maxScores = {
+            primal: calculateMaxSectionScore('primal'),
+            heart: calculateMaxSectionScore('heart'),
+            mind: calculateMaxSectionScore('mind'),
+            energetic: calculateMaxSectionScore('energetic')
+        };
+        
+        // Calculate percentages
+        const percentages = {
+            primal: (rawScores.primal / maxScores.primal) * 100,
+            heart: (rawScores.heart / maxScores.heart) * 100,
+            mind: (rawScores.mind / maxScores.mind) * 100,
+            energetic: (rawScores.energetic / maxScores.energetic) * 100
+        };
+        
+        // Normalize percentages to sum to 100%
+        const totalPercentage = percentages.primal + percentages.heart + percentages.mind + percentages.energetic;
+        
+        sacredQuizState.results.archetypes = {
+            primal: Math.round((percentages.primal / totalPercentage) * 100),
+            heart: Math.round((percentages.heart / totalPercentage) * 100),
+            mind: Math.round((percentages.mind / totalPercentage) * 100),
+            energetic: Math.round((percentages.energetic / totalPercentage) * 100)
+        };
+        
+        // Ensure percentages sum to 100% (adjust for rounding errors)
+        const sum = sacredQuizState.results.archetypes.primal + 
+                   sacredQuizState.results.archetypes.heart + 
+                   sacredQuizState.results.archetypes.mind + 
+                   sacredQuizState.results.archetypes.energetic;
+        
+        if (sum !== 100) {
+            // Find the highest value and adjust it
+            let highest = 'primal';
+            if (sacredQuizState.results.archetypes.heart > sacredQuizState.results.archetypes[highest]) highest = 'heart';
+            if (sacredQuizState.results.archetypes.mind > sacredQuizState.results.archetypes[highest]) highest = 'mind';
+            if (sacredQuizState.results.archetypes.energetic > sacredQuizState.results.archetypes[highest]) highest = 'energetic';
+            
+            sacredQuizState.results.archetypes[highest] += (100 - sum);
+        }
+    }
+
+    // Calculate score for a section
+    function calculateSectionScore(sectionId) {
+        const sectionIndex = sacredQuizData.sections.findIndex(section => section.id === sectionId);
+        const section = sacredQuizData.sections[sectionIndex];
+        const responses = sacredQuizState.userResponses[sectionId];
+        
+        let score = 0;
+        
+        section.questions.forEach((question, index) => {
+            const response = responses[index];
+            
+            if (question.type === 'scale' && response !== undefined) {
+                score += parseInt(response);
+            } else if (question.type === 'yesno' && response !== undefined) {
+                score += (response === 'yes') ? 10 : 0;
+            }
+        });
+        
+        return score;
+    }
+
+    // Calculate maximum possible score for a section
+    function calculateMaxSectionScore(sectionId) {
+        const sectionIndex = sacredQuizData.sections.findIndex(section => section.id === sectionId);
+        const section = sacredQuizData.sections[sectionIndex];
+        
+        let maxScore = 0;
+        
+        section.questions.forEach(question => {
+            if (question.type === 'scale') {
+                maxScore += question.max;
+            } else if (question.type === 'yesno') {
+                maxScore += 10; // Yes = 10 points
+            }
+        });
+        
+        return maxScore;
+    }
+
+    // Calculate orgasmic living score
+    function calculateOrgasmicLivingScore() {
+        const orgasmicSection = sacredQuizData.sections.find(section => section.id === 'orgasmic');
+        const responses = sacredQuizState.userResponses.orgasmic;
+        
+        let yesCount = 0;
+        let totalYesNoQuestions = 0;
+        
+        orgasmicSection.questions.forEach((question, index) => {
+            const response = responses[index];
+            
+            if (question.type === 'yesno') {
+                totalYesNoQuestions++;
+                if (response === 'yes') {
+                    yesCount++;
+                }
+            }
+        });
+        
+        // Calculate percentage
+        sacredQuizState.results.orgasmicLiving = Math.round((yesCount / totalYesNoQuestions) * 100);
+    }
+
+    // Determine dominant archetype
+    function determineDominantArchetype() {
+        const archetypes = sacredQuizState.results.archetypes;
+        
+        // Find the highest percentage
+        let highest = 'primal';
+        if (archetypes.heart > archetypes[highest]) highest = 'heart';
+        if (archetypes.mind > archetypes[highest]) highest = 'mind';
+        if (archetypes.energetic > archetypes[highest]) highest = 'energetic';
+        
+        sacredQuizState.results.dominantArchetype = highest;
+    }
+
+    // Determine orgasmic category
+    function determineOrgasmicCategory() {
+        const score = sacredQuizState.results.orgasmicLiving;
+        
+        for (const category of sacredQuizData.orgasmicCategories) {
+            if (score >= category.range[0] && score <= category.range[1]) {
+                sacredQuizState.results.orgasmicCategory = category.title;
+                break;
+            }
+        }
+    }
+
+    // Show the results
+    function showResults() {
+        showSection('results');
+        
+        // Generate and display results
+        displayArchetypeResults();
+        displayOrgasmicResults();
+    }
+
+    // Display archetype results
+    function displayArchetypeResults() {
+        const dominantArchetype = sacredQuizState.results.dominantArchetype;
+        const archetypeData = sacredQuizData.archetypeDescriptions[dominantArchetype];
+        const archetypes = sacredQuizState.results.archetypes;
+        
+        // Create horizontal bar chart
+        sacredElements.barChartContainer.innerHTML = `
+            <h3>Your Archetype Distribution</h3>
+            <div style="margin: 30px 0;">
+                <div class="sacred-bar sacred-primal-bar" style="width: ${archetypes.primal}%;">
+                    <span class="sacred-bar-label">Primal</span>
+                    <span class="sacred-bar-value">${archetypes.primal}%</span>
+                </div>
+                <div class="sacred-bar sacred-heart-bar" style="width: ${archetypes.heart}%;">
+                    <span class="sacred-bar-label">Heart</span>
+                    <span class="sacred-bar-value">${archetypes.heart}%</span>
+                </div>
+                <div class="sacred-bar sacred-mind-bar" style="width: ${archetypes.mind}%;">
+                    <span class="sacred-bar-label">Mind</span>
+                    <span class="sacred-bar-value">${archetypes.mind}%</span>
+                </div>
+                <div class="sacred-bar sacred-energetic-bar" style="width: ${archetypes.energetic}%;">
+                    <span class="sacred-bar-label">Energetic</span>
+                    <span class="sacred-bar-value">${archetypes.energetic}%</span>
+                </div>
+            </div>
+        `;
+        
+        // Display archetype description
+        sacredElements.resultDescription.innerHTML = `
+            <h3>Your Dominant Archetype: ${archetypeData.title}</h3>
+            <p>${archetypeData.description}</p>
+            
+            <h4>Strengths:</h4>
+            <ul>
+                ${archetypeData.strengths.map(strength => `<li>${strength}</li>`).join('')}
+            </ul>
+            
+            <h4>Growth Areas:</h4>
+            <ul>
+                ${archetypeData.growthAreas.map(area => `<li>${area}</li>`).join('')}
+            </ul>
+        `;
+        
+        // Display recommendations
+        const recommendationsContainer = document.querySelector('.sacred-recommendations');
+        recommendationsContainer.innerHTML = `
+            <h3>Personalized Recommendations</h3>
+            ${archetypeData.recommendations.map(rec => `<div class="sacred-recommendation-item">${rec}</div>`).join('')}
+            
+            <h3>Recommended Programs</h3>
+            ${archetypeData.programs.map(program => `<div class="sacred-recommendation-item">${program}</div>`).join('')}
+        `;
+    }
+
+    // Display orgasmic results
+    function displayOrgasmicResults() {
+        const orgasmicScore = sacredQuizState.results.orgasmicLiving;
+        const orgasmicCategory = sacredQuizState.results.orgasmicCategory;
+        
+        // Find the category data
+        const categoryData = sacredQuizData.orgasmicCategories.find(cat => cat.title === orgasmicCategory);
+        
+        // Create a new chart container
+        const orgasmicChartContainer = document.createElement('div');
+        orgasmicChartContainer.className = 'sacred-bar-chart-container';
+        orgasmicChartContainer.innerHTML = `
+            <div style="text-align: center;">
+                <h3>Your Orgasmic Living Score: ${orgasmicScore}%</h3>
+                <div style="margin: 20px auto; width: 80%; height: 30px; background-color: #eee; border-radius: 15px; overflow: hidden;">
+                    <div style="height: 100%; width: ${orgasmicScore}%; background: linear-gradient(90deg, #d4a373, #9c6644); border-radius: 15px;"></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; width: 80%; margin: 0 auto; font-size: 1.2rem;">
+                    <span>Beginner</span>
+                    <span>Developing</span>
+                    <span>Intermediate</span>
+                    <span>Advanced</span>
+                    <span>Master</span>
+                </div>
+            </div>
+        `;
+        
+        // Insert after the first chart container
+        sacredElements.barChartContainer.parentNode.insertBefore(orgasmicChartContainer, sacredElements.barChartContainer.nextSibling);
+        
+        // Create a new result description
+        const orgasmicDescription = document.createElement('div');
+        orgasmicDescription.className = 'sacred-result-description';
+        orgasmicDescription.innerHTML = `
+            <h3>Your Orgasmic Living Category: ${categoryData.title}</h3>
+            <p>${categoryData.description}</p>
+            
+            <h4>Recommendations:</h4>
+            <ul>
+                ${categoryData.recommendations.map(rec => `<li>${rec}</li>`).join('')}
+            </ul>
+        `;
+        
+        // Insert after the first result description
+        sacredElements.resultDescription.parentNode.insertBefore(orgasmicDescription, sacredElements.resultDescription.nextSibling);
+    }
+
+    // Email results
+    function emailResults() {
+        const email = sacredElements.emailInput.value.trim();
+        
+        if (!email) {
+            sacredElements.emailMessage.innerHTML = '<p style="color: red;">Please enter your email address.</p>';
+            return;
+        }
+        
+        if (!validateEmail(email)) {
+            sacredElements.emailMessage.innerHTML = '<p style="color: red;">Please enter a valid email address.</p>';
+            return;
+        }
+        
+        // In a real implementation, this would send the email
+        // For now, we'll just show a success message
+        sacredElements.emailMessage.innerHTML = '<p style="color: green;">Your results have been sent to ' + email + '. Please check your inbox!</p>';
+        
+        // In a real implementation, you would use a server-side API to send the email
+        // For example:
+        // fetch('https://your-api-endpoint.com/send-email', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({
+        //         email: email,
+        //         results: sacredQuizState.results,
+        //         dominantArchetype: sacredQuizState.results.dominantArchetype,
+        //         orgasmicCategory: sacredQuizState.results.orgasmicCategory
+        //     }),
+        // })
+        // .then(response => response.json())
+        // .then(data => {
+        //     sacredElements.emailMessage.innerHTML = '<p style="color: green;">Your results have been sent to ' + email + '. Please check your inbox!</p>';
+        // })
+        // .catch((error) => {
+        //     sacredElements.emailMessage.innerHTML = '<p style="color: red;">There was an error sending your results. Please try again later.</p>';
+        // });
+    }
+
+    // Validate email format
+    function validateEmail(email) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+
+    // Show a specific section and hide others
+    function showSection(sectionId) {
+        sacredElements.introSection.classList.remove('active');
+        sacredElements.questionSection.classList.remove('active');
+        sacredElements.resultsSection.classList.remove('active');
+        
+        if (sectionId === 'intro') {
+            sacredElements.introSection.classList.add('active');
+        } else if (sectionId === 'question') {
+            sacredElements.questionSection.classList.add('active');
+        } else if (sectionId === 'results') {
+            sacredElements.resultsSection.classList.add('active');
+        }
+    }
+
+    // Restart the quiz
+    function restartQuiz() {
+        // Reset quiz state
+        sacredQuizState.currentSection = 0;
+        sacredQuizState.currentQuestion = 0;
+        sacredQuizState.userResponses = {
+            primal: [],
+            heart: [],
+            mind: [],
+            energetic: [],
+            orgasmic: []
+        };
+        
+        // Show intro section
+        showSection('intro');
+    }
+
+    // Initialize the quiz
+    initQuiz();
+});
+    </script>
+</body>
+</html>
